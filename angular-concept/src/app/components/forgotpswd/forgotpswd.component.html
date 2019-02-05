@@ -1,0 +1,43 @@
+<!-- <p>
+    forgot pswd works!
+</p> -->
+
+
+<div class="forgot_password_main">
+    <div class="row marg_0">
+        <div class="col-sm-6 pad_0">
+            <div class="forgot_left" style="background-image: url('./../assets/images/login_left_bg.png')">
+                <div class="forgot_heading">
+                    <h2>Forgot Password?</h2>
+                    <p>Enter your email below, and we'll send you the Reset Link</p>
+                </div>
+                <div class="input_fields">
+                    <form #forgotForm="ngForm" (ngSubmit)="onClickSubmit(forgotForm.value)">
+                        <input type="text" name="uname" class="form-control common_input" placeholder="Email" ngModel required (click)="resetFlags()">
+                        <p class="error_msg" style="font-weight: bold;">{{ msg }}</p>
+                        <p class="error_msg" *ngIf="validUname" style="font-weight: bold;">Enter Registered e-mail address</p>
+                        <input type="submit" value="Submit" class="common_btn forgot_submit">
+                        <!-- <input type="submit" value="Submit" [disabled]="!forgotForm.form.valid" class="common_btn"> -->
+                    </form>
+
+                    <a routerLink="/login">Back to Login</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 pad_0">
+            <div class="forgot_right">
+                <div class="right-content">
+                    <!-- <h4>THE STORY BEHIND THE NAME</h4> -->
+                    <h4>ABOUT THE TRASERS STORY</h4>
+                    <div class="logo-block">
+                        <img src="./../assets/images/logo.png" class="logo img-responsive" alt="logo">
+                    </div>
+                    <p class="logo_tagline">BUSINESS TRANSFORMATION RESEARCH</p>
+                    <div class="rightcontent_width" *ngIf="forgotBodyContent">
+                        <div [innerHTML]="forgotBodyText"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

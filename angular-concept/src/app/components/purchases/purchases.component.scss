@@ -1,0 +1,35 @@
+.sub_heading{
+    margin-left: 0px;
+    margin-top: -2px;
+    margin-bottom: 20px;
+}
+.library_media {
+    padding-left: 0px;
+    li {
+        list-style-type: none;
+        a {
+            width: 50px;
+            height: 50px;
+            // border: 1px solid #cfcfcf;
+            text-align: center;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: block;
+            span {
+                color: #f26b6f;
+                font-size: 36px;
+                line-height: 50px;
+                &.icon-dele_rep {
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        margin: 0 auto;
+                        vertical-align: middle;
+                        line-height: 19px;
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

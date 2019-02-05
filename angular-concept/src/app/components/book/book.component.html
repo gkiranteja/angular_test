@@ -1,0 +1,430 @@
+<div *ngIf="loading" class="loading">
+    <div>Loading...</div>
+</div>
+<div class="modal ots_popup" *ngIf="fullScreen && online" [style.display]="ots? 'block' : 'none'"> 
+    <div class="modal-dialogg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span class="fa fa-close" (click)="ots = false"></span>
+                </button>
+                <h4 class="modal-title">One Time Share</h4>
+            </div>
+            <div class="modal-body">
+                <!-- <div class="col-sm-2">
+                      <div class="add-icon" (click)="addNewFiled()"><img  src="./../assets/images/add.svg"></div> 
+                    </div> -->
+                <!-- <form #referrerForm="ngForm" id="contacsForm" name="contacsForm" (ngSubmit)="submitReferral(referrerForm.value)"> -->
+                <div class=" select_container referral_item" *ngFor="let item of ElemntsArray; let i = index;">
+                    <input class="referral_input" type="text" [(ngModel)]="item.email_shared_to" placeholder="Enter Email"
+                        name="email" id="{{'email-' + i}}">
+                    <div class="add_removeiocns" *ngIf="(i==0)" style="display:flex">
+                        <div class="add-icon" (click)="addNewFiled(i)">
+                            <img src="./../../assets/images/add.svg" />
+                        </div>
+                        <div *ngIf="firstRowDelete && i==0" class='cross-icon' (click)="RemoveFiled(i)">
+                            <img src="./../../assets/images/multiply.svg" />
+                        </div>
+                    </div>
+                    <div class="" *ngIf="(i > 0)">
+                        <div [class]=classes[i] (click)="RemoveFiled(i)">
+                            <img [src]=dummyImageArray[i] />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" class="errormessage">
+                    <div *ngIf="showError" class="error-status">Please enter valid inputs.</div>
+                    <!-- <div *ngIf="showResponseStatus">{{showResponse}}</div>  -->
+                    <div *ngIf="exceedLimit" class="error-status">You have reached the maximum limit of 10.</div>
+                </div>
+
+                <div class="submit_button">
+                    <div class="submit_btn">
+                        <!-- data-target="#submitmodal" -->
+                        <div data-toggle="modal" class="submit_text" (click)="prepareObj()" type="button">BUY ${{price}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="book-preview-container" [ngClass]="fullScreen ? 'book-container' : '' ">
+    <div class="width25" [ngClass]="fullScreen ? 'left-side-view' : '' " *ngIf="dataArray && fullScreen"
+        [style.display]="tumbnails? 'block' : 'none'">
+        <div class="book-images-container">
+            <div class="book-images-inner">
+                <img *ngFor="let item of dataArray; let i = index" [ngClass]="activeImage == i? 'active' : ''" (click)="flipPageTo(i)"
+                    [src]="item.image" alt="Report" />
+            </div>
+        </div>
+    </div>
+    <div *ngIf="fullScreen">
+        <div class="flipbook_tabs_ul" *ngIf="reportData.purchased == 'True' || reportData.purchased == true">
+            <div class="container container-no-margin">
+                <ul>
+                    <li (click)="goToIndex(index.flipweight)" [ngClass]="activeIndex == index.flipweight? 'active' : ''"
+                        *ngFor="let index of reportData.index; let i = index">
+                        <a href="#">
+                            <img src="./../../assets/images/tab_icon1.png">
+                            <span class="image-flipbook">{{index.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- <div class="discover-left">
+      <button class="btn common_btn logout_btn">Technology</button>
+      <h3>Discover Your Style</h3>
+      <div class="view_block">
+        <ul>
+          <li>
+            <span><img src="./../../assets/images/cal_white.svg" class="calendar" /></span>22 Aug,
+            2018
+          </li>
+          <li>
+            <span><img src="./../../assets/images/view.svg" class="view-eye" /></span>250</li>
+          <li>
+            <span class="fa fa-star"></span>3</li>
+          <li>
+            <span class="share"><img src="./../../assets/images/shareblack.svg"></span>100</li>
+        </ul>
+      </div>
+    </div> -->
+    </div>
+    <div class="width75 right-side-view">
+        <div class="right-side-container">
+            <!-- <div class="pages-numbers">{{flipPage.currentPageNumber}}/{{flipPage.totalCount}}</div> -->
+            <!-- <div id="zoom-viewport"> -->
+            <div class="water-mark" *ngIf="waterMark">This Report is Licensed to {{waterMark}}</div>
+            <div id="book" class="book" [ngClass]="noImageLoader" (wheel)="onMouseWheel($event)">
+            </div>
+            <!-- </div> -->
+        </div>
+        <div class="inpage_controls" *ngIf="!fullScreen">
+            <span class="inpage_btn " (click)="flipPrev()">
+                <img src="./../../assets/images/left_circle_icon.png">
+            </span>
+            <span class="inpage_btn" (click)="flipNext()">
+                <img src="./../../assets/images/right_circle_icon.png">
+            </span>
+            <span class="expand_img" (click)="expand()">
+                <img src="./../../assets/images/fullscreen_icon.png">
+            </span>
+            <!-- <span class="download_img" *ngIf="reportData.purchased == 'True' && !notDownloadble" (click)="saveOffline()">
+                <img src="./../../assets/images/down.svg">
+            </span> -->
+            <span class="download_img" *ngIf="reportData.roleAccess == 'True' && !notDownloadble" (click)="saveOffline()">
+                <img src="./../../assets/images/down.svg">
+            </span>
+        </div>
+    </div>
+    <div id="fb5-footer" style="opacity: 1;" *ngIf="fullScreen">
+        <div class="container">
+            <div class="fb5-bcg-tools"></div>
+            <a id="fb5-logo" class="flip_logo" style="visibility: hidden; opacity: 0;">
+                <img alt="" src=" ./../../assets/images/logo-1.png">
+            </a>
+            <div class="fb5-menu" id="fb5-center" [ngClass]="tumbnails? 'tumbnails_media' : ''">
+                <ul>
+                    <li (click)="flipPrev(); engage = false; ots = false">
+                        <a class="fb5-arrow-left"><img src=" ./../../assets/images/previous-btn.png" alt="Previous"></a>
+                    </li>
+                    <li title="Home" (click)="flipPageTo(0); engage = false; ots = false">
+                        <a class="fb5-home"><img src=" ./../../assets/images/home_circle_icon (1).png" alt="Home"></a>
+                    </li>
+                    <li title="Thumbnails" (click)="tumbnailsMenue(); engage = false; ots = false">
+                        <a class="fb5-show-all" id="fb5-show-all"><img src=" ./../../assets/images/thumb_circle_icon (1).png"
+                                alt="Thumbnails"></a>
+                    </li>
+                    <li title="Zoom In" (click)="flipZoomIn(); engage = false; ots = false">
+                        <a class="fb5-zoom-in"><img src=" ./../../assets/images/zoom_plus_circle_icon (1).png" alt="Zoom In"></a>
+                    </li>
+                    <li title="Zoom Out" (click)="flipZoomOut(); engage = false; ots = false">
+                        <a class="fb5-zoom-out"><img src=" ./../../assets/images/zoom_min_circle_icon (1).png" alt="Zoom Out"></a>
+                    </li>
+                    <li title="Full Screen" (click)="closeNav(); engage = false; ots = false">
+                        <a class="fb5-fullscreen">
+                            <img src="./../../assets/images/fullscreen_exit_icon (1).png" alt="">
+                        </a>
+                    </li>
+                    <!-- <li title="Notes" *ngIf="reportData.purchased == 'True' || reportData.purchased == true" (click)="showMoreOptions(); engage = false; ots = false">
+                        <a class="fb5-customer-support" id="flip_notes"><img src=" ./../../assets/images/customer-support.png"
+                                alt="Notes"></a>
+                    </li> -->
+                    <li title="Notes" *ngIf="reportData.roleAccess == 'True' || reportData.roleAccess == true" (click)="showMoreOptions(); engage = false; ots = false">
+                        <a class="fb5-customer-support" id="flip_notes"><img src=" ./../../assets/images/customer-support.png"
+                                alt="Notes"></a>
+                    </li>
+                    <li title="Next" (click)="flipNext(); engage = false; ots = false">
+                        <a class="fb5-arrow-right"><img src=" ./../../assets/images/next-btn.png" alt="Next"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="flipbook_notes_section p-t-b-50 footer-wrapper flipbook_notes_section_click">
+            <div class="container container-more" *ngIf="isMoreEnable && fullScreen">
+                <div class="tabs">
+                    <ul class="nav nav-tabs">
+                        <li class="active" (click)="engage = false; ots = false">
+                            <a data-toggle="tab" href="#menu21" name="menu21">NOTES</a>
+                        </li>
+                        <li (click)="engage = false; ots = false">
+                            <a data-toggle="tab" href="#menu22" name="menu22">FEEDBACK</a>
+                        </li>
+
+                        <li (click)="engage = false; ots = false">
+                            <a data-toggle="tab" href="#menu23" name="menu23">CUSTOM RESEARCH </a>
+                        </li>
+                        <li (click)="engage = false; ots = false">
+                            <a data-toggle="tab" href="#menu24" (click)="setDropDownVal()" name="menu24">CONTRIBUTE</a>
+                        </li>
+                        <li (click)="engage = true; ots = false"  *ngIf="online">
+                            <a data-toggle="tab" href="#menu25" name="menu25">ENGAGE</a>
+                        </li>
+                        <li *ngIf="online && storeUploaded">
+                            <a data-toggle="tab" href="#menu26" name="menu26" (click)="showOTSPopUP()">ONE TIME SHARE</a>
+                        </li>
+                    </ul>
+                    <!-- </div> -->
+                    <div class="tab-content">
+                        <div id="menu21" name="menu21" class="tab-pane fade in active">
+                            <div class="input-container">
+                                <div class="row" style="height: auto;">
+                                    <div class="col-sm-10 content-left">
+                                        <textarea id="noteTextArea" rows="2" [(ngModel)]="showNotesData.Notes"
+                                            maxlength="5000" placeholder="Enter your comments here." class="form-control input-pop-over"
+                                            (click)="resetFontColor($event)"></textarea>
+                                        <div class="pop-over-text" id="noteId" style="display:none;text-align: right;color:green">
+                                            Your Notes Have Been Saved</div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="btn btn-primary save_btnn" (click)="setNotesData()"><img src="./../../assets/images/save-btn.png">Save</div>
+                                        <span class="share_img"><img src="./../../assets/images/shareblack.svg" *ngIf="!offlineMode.offline && showShare == true"
+                                                href="javascript: void()" (click)="shareNotes()"></span>
+                                    </div>
+                                </div>
+                                <!-- <div class="pop-over-text" id="noteId" style="display:none;text-align: right;color:green"> Your Notes Have Been Saved</div> -->
+                            </div>
+                        </div>
+                        <!--<div id="menu1" class="tab-pane fade">
+                <div class="input-container">
+                    <div class="row" style="height: auto;">
+                        <div class="col-sm-10 content-left">
+                            <input type=text placeholder="Write comment here...." class="form-control input-pop-over">
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="btn btn-primary save_btnn"><img src="./../../assets/images/save-btn.png">Post</div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+              <div id="menu2" class="tab-pane fade">
+                <div class="input-container">
+                    <div class="row" style="height: auto;">
+                        <div class="col-sm-10 content-left">
+                            <input type=text placeholder="Write comment here...." class="form-control input-pop-over">
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="btn btn-primary save_btnn"><img src="./../../assets/images/save-btn.png">Post</div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <!-- <div id="menu3" class="tab-pane fade">
+              <div class="input-container">
+                <textarea cols="60" rows="2" id="addFeedback" [(ngModel)]="feedbackContent" placeholder="Write comment here...." class="form-control input-pop-over"></textarea>
+                <div class="pop-over-btn" (click)="saveFeedbackData()">Post</div>
+              </div>
+              <div class="pop-over-text" *ngIf="showFeedbackData && showFeedbackData.FeedbackNotes"> {{showFeedbackData.FeedbackNotes}}</div>
+            </div> -->
+                        <!-- <div id="menu22" name="menu22" class="tab-pane fade">
+                            <div class="input-container">
+                                <div class="row" style="height: auto;">
+                                    <div class="col-sm-10 content-left">
+                                        <textarea rows="2" id="addFeedback" [(ngModel)]="showFeedbackData.FeedbackNotes" placeholder="Enter your comments here." class="form-control input-pop-over" (click)="resetFontColor($event)"></textarea>
+                                        <div class="pop-over-text" id="feedbackId" style="display:none;text-align: right;color:green"> Your Feedback Have Been Saved </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="btn btn-primary save_btnn" (click)="saveFeedbackData()"><img src="./../../assets/images/save-btn.png">Save</div>
+                                    </div>
+                                </div>
+                                <div class="pop-over-text" id="feedbackId" style="display:none;text-align: right;color:green"> Your Feedback Have Been Saved  </div>
+                            </div>
+                        </div> -->
+                        <!-- <div id="menu4" class="tab-pane fade">
+              <div class="input-container">
+                  <div class="row" style="height: auto;">
+                      <div class="col-sm-10 content-left">
+                          <input type=text placeholder="Write comment here...." class="form-control input-pop-over">
+                      </div>
+                      <div class="col-sm-2">
+                          <div class="btn btn-primary save_btnn"><img src="./../../assets/images/save-btn.png">Post</div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            <!-- <div id="menu3" class="tab-pane fade">
+            <div class="input-container">
+              <textarea cols="60" rows="2" id="addFeedback" [(ngModel)]="feedbackContent" placeholder="Write comment here...." class="form-control input-pop-over"></textarea>
+              <div class="pop-over-btn" (click)="saveFeedbackData()">Post</div>
+            </div>
+            <div class="pop-over-text" *ngIf="showFeedbackData && showFeedbackData.FeedbackNotes"> {{showFeedbackData.FeedbackNotes}}</div>
+          </div> -->
+                        <div id="menu22" name="menu22" class="tab-pane fade">
+                            <div class="input-container">
+                                <div class="row" style="height: auto;">
+                                    <div class="col-sm-10 content-left">
+                                        <textarea rows="2" id="addFeedback" [(ngModel)]="showFeedbackData.Feedback"
+                                            maxlength="5000" placeholder="Enter your comments here." class="form-control input-pop-over"
+                                            (click)="resetFontColor($event)"></textarea>
+                                        <div class="pop-over-text" id="feedbackId" style="display:none;text-align: right;color:green">
+                                            Your Feedback Have Been Saved </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="btn btn-primary save_btnn" (click)="saveFeedbackData()"><img src="./../../assets/images/save-btn.png">Save</div>
+                                        <span class="share_img"><img src="./../../assets/images/shareblack.svg" *ngIf="showShare == true"
+                                                href="javascript: void()" (click)="shareFeedbacks()"></span>
+                                    </div>
+                                    <div class="pop-over-text" *ngIf="showCustomResearchData && showCustomResearchData.CUSTOMRESEARCH">
+                                        {{showCustomResearchData.CUSTOMRESEARCH}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div id="menu6" class="tab-pane fade">
+              <div class="input-container">
+                <textarea cols="60" rows="2" id="addcustomResearch" [(ngModel)]="customResearchContent" placeholder="Write comment here...."
+                  class="form-control input-pop-over"></textarea>
+                <div class="pop-over-btn" (click)="saveCustomResearchData()">Post</div>
+              </div>
+              <div class="pop-over-text" *ngIf="showCustomResearchData && showCustomResearchData.CUSTOMRESEARCH"> {{showCustomResearchData.CUSTOMRESEARCH}}</div>
+            </div> -->
+                        <div id="menu23" name="menu23" class="tab-pane fade">
+                            <div class="input-container">
+                                <div class="row" style="height: auto;">
+                                    <div class="col-sm-10 content-left">
+                                        <textarea rows="2" id="addcustomResearch" [(ngModel)]="showCustomResearchData.CustomResearch"
+                                            maxlength="5000" placeholder="Enter your comments here." class="form-control input-pop-over"
+                                            (click)="resetFontColor($event)"></textarea>
+                                        <div class="pop-over-text" id="crId" style="display:none;text-align: right;color:green">We
+                                            Will Get In Touch With You </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="btn btn-primary save_btnn" (click)="saveCustomResearchData()"><img
+                                                src="./../../assets/images/save-btn.png">Save</div>
+                                        <span class="share_img"><img src="./../../assets/images/shareblack.svg" *ngIf="showShare == true"
+                                                href="javascript: void()" (click)="shareCR()"></span>
+
+                                    </div>
+                                </div>
+                                <!-- <div class="pop-over-text" id="crId" style="display:none;text-align: right;color:green">We Will Get In Touch With You </div> -->
+                            </div>
+                        </div>
+                        <!-- <div id="menu7" class="tab-pane fade">
+              <div class="input-container">
+                <textarea cols="60" rows="2" id="addContributeNotes" [(ngModel)]="contributeNotesContent" placeholder="Write comment here...."
+                  class="form-control input-pop-over"></textarea>
+                <div class="pop-over-btn" (click)="saveContributeNotesData()">Post</div>
+              </div>
+              <div class="pop-over-text" *ngIf="showContributeNotesData"> {{showContributeNotesData.ContributeNotes}}</div>
+            </div> -->
+                        <div id="menu24" name="menu24" class="tab-pane fade">
+                            <div class="input-container">
+                                <div class="row" style="height: auto;">
+                                    <div class="col-sm-10 content-left">
+                                        <div class="col-sm-4">
+                                            <div class="contribute_dropdown">
+                                                <select id="contributeCategory" [(ngModel)]="selectedOption" class='contribute_dropdown_list'>
+                                                    <!-- <option value="Contribute">Contribute</option> -->
+                                                    <option value="" class="" style="text-decoration: underline">Category</option>
+                                                    <option value="Participate in Survey">Participate in Survey</option>
+                                                    <option value="Author Blogs">Author Blogs</option>
+                                                    <option value="Contribute to Case Study">Contribute to Case Study</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8" style="padding-top: 0px;">
+                                            <textarea rows="2" id="addContributeNotes" [(ngModel)]="showContributeNotesData.ContributeNotes"
+                                                maxlength="5000" placeholder="Enter your comments here." class="form-control input-pop-over"
+                                                (click)="resetFontColor($event)"></textarea>
+                                            <div class="pop-over-text" style="display:none;text-align: right;color:green"
+                                                id="ctId">Thank You For Your Contribution </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="btn btn-primary save_btnn" (click)="saveContributeNotesData()"><img
+                                                src="./../../assets/images/save-btn.png">Save</div>
+                                        <span class="share_img"><img src="./../../assets/images/shareblack.svg" *ngIf="showShare"
+                                                href="javascript: void()" (click)="shareCN()"></span>
+                                    </div>
+                                </div>
+                                <!-- <div class="pop-over-text" style="display:none;text-align: right;color:green" id="ctId">Thank You For Your Contribution </div> -->
+                            </div>
+                            <!-- <div id="menu25" name="menu25_" class="tab-pane fade">
+                <div class="input-container">
+                  <div class="row" style="height: auto;">
+                    <div class="col-sm-12 content-left">
+                      Lorem ipsum
+                    </div>
+                  </div>
+                <div class="pop-over-text" id="noteId" style="display:none;text-align: right;color:green"> Your Notes Have Been Saved</div>
+                </div>
+                <div class="pop-over-text" id="noteId" style="display:none">Saved Successfully</div>
+              </div>
+     -->
+                        </div>
+                        <div id="menu25" name="menu25" class="tab-pane fade">
+                            <div class="input-container">
+                                <div class="row flex_div" style="height: auto;">
+                                    <div class="col-sm-2">
+                                        <div class="engage_img">
+                                            <img src="./../../assets/images/darwin.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-10 content-left" style="border-right: 0px solid #ccc !important">
+                                        <textarea rows="2" id="addcustomResearch" [(ngModel)]="showCustomResearchData.CUSTOMRESEARCH"
+                                            placeholder="Hi I am Darwin, how can i help you " class="form-control input-pop-over"
+                                            (click)="resetFontColor($event)" style="    margin-left: -11px !important;"></textarea>
+
+                                    </div>
+                                    <!-- <div class="col-sm-2">
+                                        <div class="btn btn-primary save_btnn tab_savebtn ask_darwin" (click)="saveCustomResearchData()"><img
+                                                src="./../../assets/images/save-btn.png"><span class="ask_darwin">OTS
+                                                </span></div>
+                                    </div> -->
+                                </div>
+                                <!-- <div class="pop-over-text" id="crId" style="display:none;text-align: right;color:green">We Will Get In Touch With You </div> -->
+                            </div>
+                        </div>
+                        <div id="menu26" name="menu26" class="tab-pane fade">
+                            <div class="input-container">
+                                <div class="row flex_div" style="height: auto;">
+                                    <div class="col-sm-10">
+                                        <div class="" style="padding:10px;text-align: left;">
+                                            OTS, Stands for one time share which allows to share report inside and
+                                            outside the organization, please click here to purchase the report at 10%
+                                            of the actual report cost
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="btn btn-primary save_btnn tab_savebtn ask_darwin" (click)="showOTSPopUP()"
+                                            href="#menu27" style=" padding: 5px 25px 9px !important;"><span class="ask_darwin">OTS
+                                            </span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- </div> -->
+<div *ngIf="fullScreen && online" [hidden]="!engage">
+    <div type="button" class="chat_close" (click)="engage = false"><span class="fa fa-close"></span></div>
+    <iframe src='https://webchat.botframework.com/embed/test_demo?s=Ij4JZ7U7DcI.cwA.3c4.aPlWuVLtcUwu0tNn8xa3TA0EWjqa-Bsrfufbl2g1nW4'
+        class="chat-bot-container"></iframe>
+</div>

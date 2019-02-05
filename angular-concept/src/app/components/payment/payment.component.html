@@ -1,0 +1,10 @@
+<div class="home_main">
+  <div class="right_content " id="main">
+    <a routerLink="/cart">
+      <i class="fa fa-angle-left back_arrow"></i>
+    </a>
+    <webview [attr.src]="paymentUrl" extraHeaders="Cookie: token.sess_name=token.sessid" class="payment_overview">
+      <div class="indicator"></div>
+    </webview>
+  </div>
+</div>

@@ -1,0 +1,177 @@
+<form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm.value)" name="signupForm" id="signupForm">
+  <div class="form-group">
+    <label for="name">Fisrt Name</label>
+    <input type="text" class="form-control" name="fname" #fname="ngModel" [ngModel]="user.fname" required>
+  </div>
+  <!-- <div *ngIf="fname.invalid && (fname.dirty || fname.touched)" class="alert alert-danger">
+    <div *ngIf="fname.errors?.required">First Name can't be blank</div>
+  </div> -->
+
+  <div class="form-group">
+    <label for="name">Last Name</label>
+    <input type="text" class="form-control" name="lname" #lname="ngModel" [ngModel]="user.lname" required>
+  </div>
+  <!-- <div *ngIf="lname.invalid && (lname.dirty || lname.touched)" class="alert alert-danger">
+    <div *ngIf="lname.errors?.required">Last Name can't be blank</div>
+  </div> -->
+
+  <div class="form-group">
+    <label for="inputEmail">Email</label>
+    <input type="text" [ngModel]="user.email" name="email" #email="ngModel" id="inputEmail" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+      required>
+  </div>
+  <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+    <div *ngIf="email.errors?.required">
+      Email field can't be blank
+    </div>
+    <div *ngIf="email.errors?.pattern && email.touched">
+      The email id doesn't seem right
+    </div>
+  </div> -->
+
+
+  <div ngModelGroup="password" #userPassword="ngModelGroup" required>
+    <div class="form-group">
+      <label for="inputPassword">Password</label>
+      <input type="password" ngModel name="pwd" id="inputPassword" placeholder="Password" minlength="8" required>
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" ngModel name="confirmPwd" id="confirmPassword" placeholder="Confirm Password">
+    </div>
+    <!-- <div *ngIf="(userPassword.invalid|| userPassword.value?.pwd != userPassword.value?.confirmPwd) && (userPassword.touched)"
+      class="alert alert-danger">
+      <div *ngIf="userPassword.invalid; else nomatch">
+        Password needs to be more than 8 characters
+      </div>
+      <ng-template #nomatch>
+        Passwords don't match
+      </ng-template>
+    </div> -->
+  </div>
+
+  <div class="form-group">
+    <label for="name">organaisation Name</label>
+    <input type="text" class="form-control" name="orgname" #oname="ngModel" [ngModel]="user.oname" required>
+  </div>
+  <!-- <div *ngIf="oname.invalid && (oname.dirty || oname.touched)" class="alert alert-danger">
+    <div *ngIf="oname.errors?.required">Organaisation name can't be blank</div>
+  </div> -->
+
+
+  <div class="form-group">
+    <label for="name">Industry</label>
+    <select name="industry" id="industryType" [ngModel]="selectedIndustry" required>
+      <option [selected]="industry.category_name == 'Automotive'? 'selected': ''" *ngFor="let industry of user.industry; let dataIndex=index"
+        [ngValue]="industry.category_id">{{industry.category_name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Functions</label>
+    <select name="Function" id="FunctionType" [ngModel]="selectedFunction" required>
+      <option *ngFor="let function of user.functions;let dataIndex=index" [ngValue]="function.category_id">{{function.category_name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Regions</label>
+    <select name="region" id="regionType" [ngModel]="selectedRegion" required>
+      <option *ngFor="let region of user.regions;let dataIndex=index" [ngValue]="region.category_id">{{region.category_name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <input type="checkbox" name="tc" [ngModel]="user.isTCAccepted" required #tc="ngModel">
+    <div *ngIf="tc.invalid && signupForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+      Accept T & C.
+    </div>
+  </div>
+  <!-- <div *ngIf="tc.invalid && (tc.dirty || tc.touched)" class="alert alert-danger">
+    <div *ngIf="tc.errors?.required">Please accept terms and conditions</div>
+  </div> -->
+
+  <div class="form-group">
+    <label for="name">Countrys</label>
+    <select name="countrys" id="countryType" [ngModel]="selectedCountry" required>
+      <option [selected]="country.country_name == selectedCountry ? 'selected': ''"  *ngFor="let country of listOfCountrys; let dataIndex=index" 
+      [ngValue]="country.country_id">{{country.country_name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="name">State</label>
+    <select name="states" id="stateType" [ngModel]="selectedState" required>
+      <option [selected]="state.zone_name == selectedState ? 'selected': ''" *ngFor="let state of listOfStates; let dataIndex=index" 
+      [ngValue]="state.zone_id">{{state.zone_name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="name">City</label>
+    <input type="text" class="form-control" name="city" #city="ngModel" [ngModel]="user.city" required>
+  </div>
+  <!-- <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger">
+    <div *ngIf="city.errors?.required">City field can't be blank</div>
+  </div> -->
+
+
+  <div class="form-group">
+    <label for="name">Office Address</label>
+    <input type="text" class="form-control" name="address" #officeAdd="ngModel" [ngModel]="user.address" required>
+  </div>
+  <!-- <div *ngIf="officeAdd.invalid && (officeAdd.dirty || officeAdd.touched)" class="alert alert-danger">
+    <div *ngIf="officeAdd.errors?.required">Office address field can't be blank</div>
+  </div> -->
+
+
+  <div class="form-group">
+    <label for="name">pinCode </label>
+    <input type="text" class="form-control" name="pinCode" #pinCode="ngModel" [ngModel]="user.pinCode" minlength="6"
+      maxlength="6" pattern="[1-9]{1}[0-9]{5}" required>
+  </div>
+  <!-- <div *ngIf="pinCode.invalid && (pinCode.dirty || pinCode.touched)" class="alert alert-danger">
+      <div *ngIf="pinCode.errors?.required">Pincode field can't be blank</div>
+      <div *ngIf="pinCode.errors?.pattern && pinCode.touched">
+          Pincode doesn't seem right.Please enter numbers
+        </div>
+    </div> -->
+  
+
+  <div class="form-group">
+    <label for="name">phone Number</label>
+    <input type="text" class="form-control" name="phnum" #phnum="ngModel" [ngModel]="user.phnum" minlength="10"
+      maxlength="10" pattern="[1-9]{1}[0-9]{9}" required>
+  </div>
+  <!-- <div *ngIf="phnum.invalid && (phnum.dirty || phnum.touched)" class="alert alert-danger">
+      <div *ngIf="phnum.errors?.required">Mobile number field can't be blank</div>
+      <div *ngIf="phnum.errors?.pattern && phnum.touched">
+          Mobile number is required and eneter only numbers
+        </div>
+    </div> -->
+
+  
+
+  <div class="form-group">
+    <div class="nav-item" [routerLinkActive]="['active']">I agree to the
+      <a class="nav-link" [routerLink]="['../termsAndPolacy']" (click)="termsAnsPolacy(1)">Terms of Use</a> and
+      <a class="nav-link" [routerLink]="['../termsAndPolacy']" (click)="termsAnsPolacy(2)">privacy polacy</a>
+    </div>
+  </div>
+  <div *ngIf="dataValidation">{{errorMsg}}</div>
+
+  <input type="submit" class="disable_common_btn" id="submitbutton" value="SAVE CHANGES" />
+
+  <div class="nav-item register-block" [routerLinkActive]="['active']">
+    <p>Existing User? <a class="nav-link" [routerLink]="['../login']" >Login</a>
+       
+</div>
+
+</form>
+
+<p *ngIf=!signUpSuccess>Already a member</p>

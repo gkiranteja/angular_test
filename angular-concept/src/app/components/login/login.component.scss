@@ -1,0 +1,263 @@
+.login-block {
+    //login css
+    .split {
+        height: 100%;
+        width: 50%; // position: fixed;
+        // z-index: 1;
+        top: 0;
+        float: left;
+    }
+    .left {
+        left: 0; // background-image: url("./../assets/images/login_left_bg.png");
+        background-size: cover;
+        &:before {
+            content: '';
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+    .right {
+        right: 0;
+        background-color: white;
+    }
+    .no-padding {
+        padding: 0px;
+    }
+    .login_bg {
+        // background-image: url("./../assets/images/login_left_bg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        background-position: left center;
+        padding: 30px 50px 30px 80px;
+        h2 {
+            color: #ffffff;
+            font-weight: 600;
+            font-family: 'Open Sans';
+            font-size: 48px;
+            margin-top: 100px;
+        }
+        input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #81a7be;
+            padding: 10px 0px;
+            margin-bottom: 10px;
+            width: 100%;
+            font-size: 18px;
+            outline: none;
+            color: #fff;
+            &::placeholder {
+                color: #a8bac7;
+            }
+        }
+        .forget-password {
+            display: block;
+            clear: both;
+            a {
+                text-decoration: none;
+                color: #ee6126;
+                float: right;
+                font-size: 15px;
+            }
+        }
+        .password_field {
+            position: relative;
+            img {
+                position: absolute;
+                right: 15px;
+                top: 14px;
+                color: #5d90aa;
+            }
+            .view-eye {
+                cursor: pointer;
+                color: #cecece;
+                position: absolute;
+                top: 22px;
+                right: 7px;
+                font-size: 18px;
+            }
+        }
+        .policy-block {
+            display: block;
+            clear: both;
+            padding: 20px 0px;
+            p {
+                color: #fff;
+                font-size: 16px; // font-weight:600;
+                a {
+                    font-size: 16px;
+                    color: #ee6126;
+                    display: inline-block;
+                    text-decoration: none;
+                }
+            }
+        }
+        .login-button {
+            text-align: center;
+            input[type=submit] {
+                background-color: rgb(238, 96, 37);
+                border: none;
+                color: white;
+                padding: 10px 20px;
+                text-decoration: none;
+                margin: 40px 0px 20px 0px;
+                cursor: pointer;
+                border-radius: 25px;
+                width: 100px;
+                text-transform: uppercase;
+                font-weight: bold;
+                font-family: 'Open sans';
+                font-size: 16px;
+            }
+        }
+        .register-block {
+            p {
+                text-align: center;
+                color: #fff;
+                font-size: 16px;
+                a {
+                    color: #ee6126;
+                    text-decoration: none;
+                }
+            }
+        }
+        .wrong_username {
+            color: #fff;
+            font-size: 12px;
+        }
+    }
+    .right.split {
+        .right-content {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            height: 100%;
+            h4 {
+                font-weight: normal;
+                color: #000;
+                margin: 20px 0 0;
+                font-size: 18px;
+                margin-bottom: 5px;
+                text-transform: uppercase;
+            }
+            p {
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                margin: 0 auto;
+                font-size: 12px;
+            }
+            .logo-block {
+                margin: 0 auto;
+                border-top: 1px solid #e5e5e5;
+                border-bottom: 1px solid #e5e5e5;
+                padding: 12px 0px;
+                img {
+                    width: 100%;
+                    margin: 0 auto;
+                }
+            }
+            .rightcontent_width {
+                width: auto !important;
+                overflow-y: auto;
+                overflow-x: hidden;
+                position: absolute;
+                height: 100vh;
+                max-height: 70vh;
+                padding: 0px 15px;
+                @media only screen and (max-width: 1440px) {
+                    max-height: 61vh !important;
+                }
+            }
+        }
+    }
+}
+
+.rightcontent_width {
+    h4 {
+        font-weight: 400;
+        color: #000;
+        margin: 40px 0 0 !important;
+        font-size: 18px;
+    }
+}
+
+.error_alert {
+    color: rgb(251, 73, 73);
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-style: normal;
+}
+
+.logo-block .logo_tagline {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.terms_use_modal {
+    .modal-content {
+        border: 0px solid #999 !important;
+        border: none;
+        .modal-header {
+            background: #01426a;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            margin-top: -1px;
+            h4 {
+                text-align: left;
+                color: #fff;
+            }
+            button {
+                &.close {
+                    opacity: 1;
+                    border: none;
+                    text-shadow: none;
+                    .fa-close {
+                        color: #fc6b02;
+                    }
+                }
+            }
+        }
+        .modal-body {
+            max-height: 600px;
+            overflow-y: auto;
+            font-family: 'Open Sans';
+            .terms_use_body {
+                .terms_use_list {
+                    margin: 15px 0px;
+                    h6 {
+                        font-weight: bold;
+                        font-size: 16px;
+                    }
+                    ul {
+                        padding-left: 20px;
+                        >li {
+                            list-style-type: none;
+                            margin-bottom: 15px;
+                            .grievance_list {
+                                margin-bottom: 20px;
+                                li {
+                                    margin-bottom: 0px;
+                                }
+                            }
+                        }
+                    }
+                }
+                h3,
+                h4 {
+                    font-size: 20px;
+                    margin: 12px 0px;
+                    font-family: 'Open Sans';
+                }
+                p {
+                    font-family: 'Open Sans' !important;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

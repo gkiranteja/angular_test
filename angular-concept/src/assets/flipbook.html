@@ -1,0 +1,87 @@
+<html>
+
+<head>
+    <script src="./lib/jquery.min.js"></script>
+    <script src="./lib/pdf.min.js"></script>
+    <script src="./lib/turn.min.js"></script>
+</head>
+
+<body>
+    <div class="flipbook">
+        <div id="pdf-canvas"></div>
+    </div>
+</body>
+<script>
+    function preparePdfData(pdf, i, canvas) {
+        pdf.getPage(i).then((page) => {
+            console.log(i);
+
+            var scale = 1.5;
+            var viewport = page.getViewport(scale);
+            if (canvas) {
+                parent.removeChild(canvas);
+            }
+            var canvas = document.createElement('canvas');
+            var parent = document.getElementById('pdf-canvas');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            parent.appendChild(canvas);
+
+            var renderContext = {
+                canvasContext: context,
+                viewport: viewport
+            };
+            let renderTask = page.render(renderContext);
+            if (pdfPagesCount > i) {
+                let url = canvas.toDataURL();
+                dataArray.push(url);
+
+                i++;
+                preparePdfData(pdf, i, canvas)
+            }
+            else {
+                setTimeout(() => {
+                    changeDetectorRef.detectChanges();
+                    Fliping();
+                }, 100);
+            }
+        });
+    }
+
+    function Fliping() {
+        const selector = '.flipbook';
+        setTimeout(() => {
+            $(selector).turn({
+                width: 1000,
+                height: 600,
+                display: 'single',
+                autoCenter: true
+            });
+            isLoading = false;
+        }, 10);
+    }
+    var pdf = window.pdfjsDistBuildPdf.PDFJS;
+    reportData = JSON.parse(localStorage.getItem('reportData'));
+    if (reportData['type'] == 'pdf') {
+        // let pdf = window.require('pdfjs-dist');
+        pdf.workerSrc = './lib/pdf.min.worker.js';
+        pdf.disableWorker = true;
+        pdf.getDocument(reportData['data']).then((pdf) => {
+            pdfPagesCount = pdf.pdfInfo.numPages;
+            let renderTask;
+            showPDF = true;
+            preparePdfData(pdf, 1);
+        });
+    }
+    else {
+        http.get("https://stagingapi.trasers.com/api_trasers/trasers_homescreen", httpOptions).subscribe((data) => {
+            let reports = data.popular.reports;
+            reports.forEach(element => {
+                dataArray.push(element.image);
+            });
+        });
+    }
+</script>
+
+</html>

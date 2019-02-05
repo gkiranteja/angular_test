@@ -1,0 +1,56 @@
+<div class="details-block">
+    <div class="right_content" id="main">
+        <div class="right_content_top">
+            <div class="flex_div news_heading">
+                <a routerLink="/home">
+                    <i class="fa fa-angle-left marg_r_10 back_arrow"></i>
+                </a>
+                <h3 *ngIf="data">{{ data.node_title }}</h3>
+            </div>
+            <!-- <button (click)="commonService.back()">Back</button> -->
+
+            <header>
+                <div class="clearfix"></div>
+
+            </header>
+            <!-- <button class="btn common_btn logout_btn" (click)="logout()">Logout</button> -->
+            <!-- <button _ngcontent-c6="" class="btn common_btn logout_btn">{{data.category[0].tag_name}}</button> -->
+
+            <div class="view_block" *ngIf="data">
+                <ul>
+                    <li>
+                        <span>
+                            <img src="./../assets/images/cal_grey.svg" class="calendar"/>
+                        </span>
+                        <span class="eye_text">{{ data.created_date }}</span>
+                    </li>
+                    <li>
+                        <span>
+                            <img src="./../assets/images/view.svg" class="view-eye"/>
+                        </span>
+                        <span class="eye_text">{{ data.total_views }}</span>
+                    </li>
+                    <!-- <li>
+                      <span class="star"><img src="./../assets/images/rating.svg" class="img-responsive"/></span>{{ data.rating }}</li> -->
+                    <li>
+                        <span class="share">
+                          <img src="./../assets/images/share.svg">
+                        </span>
+                        <span class="share_text">{{ data.total_views }}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="details_bg">
+                        <div class="details_price" *ngIf="data.purchased">
+                            <span>${{ data.price }}</span>
+                        </div>
+                        <img src="{{ data.image }}" />
+                        <div class="summary" [innerHTML]="data.article_summary"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

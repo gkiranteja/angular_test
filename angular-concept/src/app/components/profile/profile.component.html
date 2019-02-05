@@ -1,0 +1,253 @@
+<div class="home_main profile_main_bg">
+    <div class="right_content" id="main">
+        <div class="right_content_top bg_gray">
+            <div class="profile_main">
+                <div class="profile_top">
+                    <h3>My Profile</h3>
+                    <div class="row profile_padding" *ngIf="showDetails && user">
+                        <div class="col-sm-6">
+                            <div class="profile_details">
+                                <div class="form-group">
+                                    <label class="field">First Name</label>
+                                    <label class="name">{{user.first_name}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="field">Last Name</label>
+                                    <label class="name">{{user.last_name}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="field"> E-mail Address</label>
+                                    <label class="name">{{user.email_address}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="field">Phone Number</label>
+                                    <label class="name">{{user.phone}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="field">Office Address Line 1</label>
+                                    <label class="name">{{user.address1}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="field">Office Address Line 2</label>
+                                    <label class="name">{{user.address2}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="field">Country</label>
+                                    <label class="name">{{user.country}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="field">State</label>
+                                    <label class="name">{{user.state}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="field">City</label>
+                                    <label class="name">{{user.city}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="field">Postal Code</label>
+                                    <label class="name">{{user.postcode }}</label>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label class="field">Organization Name</label>
+                                    <label class="name">{{user.organization_name}}</label>
+                                </div> -->
+                                <div class="form-group">
+                                    <label class="field">Industry</label>
+                                    <label class="name">{{selectedIndustry}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="field">Function</label>
+                                    <label class="name">{{user.business_function}}</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="mydata_profile">
+                                <h4>My Data</h4>
+                                <div class="mydata_profile_in">
+                                    <span>For any queries related to personal data, please write an email to</span>
+                                </div>
+                                <div class="mydata_profile_in">
+                                    <span>Customer Support: <a href="mailto:reach@trasers.com">reach@trasers.com</a></span>
+                                </div>
+                                <div class="mydata_profile_in">
+                                    <span> GDPR: <a href="mailto:privacy@trasers.com">privacy@trasers.com</a> </span>
+                                </div>
+
+                            </div>
+                            <br><br>
+                            <br><br>
+                            <div *ngIf="successFlag" class="alert alert-success"> {{successMsg}} </div>
+                            <div *ngIf="pswdFlag" class="alert alert-success">{{passwordMsg}}</div>
+                        </div>
+
+
+                    </div>
+                    <div class="row" *ngIf="EditDetails">
+                        <form #editProfileForm="ngForm" id="editProfileForm" name="editProfileForm" (ngSubmit)="onSubmit(editProfileForm.value)">
+                            <div class="col-sm-6">
+                                <div class="profile_details">
+                                    <div class="profile_details edit_profile_details">
+                                        <div class="form-group">
+                                            <label class="field">First Name *</label>
+                                            <input type="text" id="first_name" ngModel="{{ user.first_name }}" name="first_name" value="{{ user.first_name }}" size="60" maxlength="60" />
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="field">Last Name *</label>
+                                            <input type="text" id="last_name" ngModel="{{ user.last_name }}" name="last_name" value="{{ user.last_name }}" size="60" maxlength="60" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="field">Job title </label>
+                                            <input type="text" id="job_role" ngModel="{{user.job_role}}" name="job_role" value="{{user.job_role}}" size="60" maxlength="120" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="field">Phone Number *</label>
+                                            <input type="text" id="phone" ngModel="{{ user.phone }}" name="phone" value="{{ user.phone }}" size="60" maxlength="20" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="field">Office Address Line 1 *</label>
+                                            <input type="text" id="address1" ngModel="{{ user.address1 }}" name="address1" value="{{ user.address1 }}" size="60" maxlength="500" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="field">Office Address Line 2</label>
+                                            <input type="text" id="address2" ngModel="{{ user.address2 }}" name="address2" value="{{ user.address2 }}" size="60" maxlength="500" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="field">Country *</label>
+                                            <select id="country" name="country" size="1" ngModel="{{selectedCountry}}" (change)="getStates($event.target.value)">
+                                                <option *ngFor="let country of countries; let i=index" value="{{country.country_code}}@@{{country.country_id}}">{{country.country_name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="field">State *</label>
+                                            <select id="state" name="state" ngModel="{{selectedState}}" (change)="isSatateChanged($event.target.value)">
+                                              <option *ngFor="let state of states; let dataIndex=index" value="{{state.zone_code}}">{{state.zone_name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="field">City *</label>
+                                            <input type="text" id="city" ngModel="{{ user.city }}" name="city" size="60" maxlength="128" value="{{ user.city }}" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="field">Postal Code </label>
+                                            <input type="text" id="postcode" ngModel="{{ user.postcode }}" name="postcode" value="{{ user.postcode }}" size="60" maxlength="10" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="field">Industry *</label>
+                                            <select name="industry" id="industry " ngModel="{{selectedIndustryName}} ">
+                                               <option *ngFor="let industry of industrys; let dataIndex=index "  value="{{industry.category_id}} ">{{industry.category_name}}
+                                             </option>
+                                        </select>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="field">Organization Name </label>
+                                            <input type="text" id="organization_name" ngModel="{{user.organization_name}}" name="organization_name" value="{{user.organization_name}}" size="60" maxlength="120" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="field">Function *</label>
+                                            <select id="business_function" ngModel="{{selectedBusiness}}" name="business_function" class="form-control">
+                                                <option *ngFor="let function of functions; let dataIndex=index" value="{{ function.category_id }}">{{function.category_name}}
+                                                </option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+
+                                <div class="mydata_profile">
+                                    <h4>My Data</h4>
+                                    <div class="mydata_profile_in">
+                                        <span>For any queries related to personal data, please write an email to</span>
+                                    </div>
+                                    <div class="mydata_profile_in">
+                                        <span>Customer Support: <a href="mailto:reach@trasers.com">reach@trasers.com</a></span>
+                                    </div>
+                                    <div class="mydata_profile_in">
+                                        <span> GDPR: <a href="mailto:privacy@trasers.com">privacy@trasers.com</a> </span>
+                                    </div>
+
+                                </div>
+
+
+                                <!-- 
+                                <div class="social_profiles">
+                                    <h4>Social Profiles</h4>
+
+                                    <div class="edit_social_profiles">
+                                        <div class="social_profile_in">
+                                            <span class="fa fa-facebook-official"></span>
+                                            <input type="text" id="facebook" name="facebook" ngModel="{{ user.facebook }}" value="{{ user.facebook }}" size="60" maxlength="128"
+                                            />
+                                        </div>
+                                        <div class="social_profile_in">
+                                            <span class="fa fa-linkedin-square"></span>
+                                            <input type="text" id="linkedIn" name="linkedIn" value="{{ user.linkedIn }}" ngModel="{{ user.linkedIn }}" size="60" maxlength="128"
+                                            />
+                                        </div>
+                                        <div class="social_profile_in">
+                                            <span class="fa fa-twitter-square"></span>
+                                            <input type="text" id="twitter" name="twitter" value="{{ user.twitter }}" ngModel="{{ user.twitter }}" size="60" maxlength="128"
+                                            />
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                <br><br>
+                                <h4 style="font-weight:700">Change Password</h4>
+                                <div class="password_fields profile_details">
+                                    <div class="form-group">
+                                        <label class="field">Old Password</label>
+                                        <input type="password" id="old_password" ngModel name="old_password" size="60" maxlength="128" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="field">New Password</label>
+                                        <input type="password" id="new_password" ngModel name="new_password" size="60" maxlength="128" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="field">Confirm New Password</label>
+                                        <input type="password" id="confirm_password" ngModel name="confirm_password" size="60" maxlength="128" />
+                                    </div>
+                                </div>
+                                <div *ngIf="dataValidation" class="error_alert" style="font-weight: bold;color:red">
+                                    {{errorMsg}}
+                                </div>
+                                <!-- <div class="alert alert-danger" *ngIf="dataValidation" style="font-weight: bold;">{{errorMsg}}</div> -->
+                                <!-- <div *ngIf="successFlag" class="alert alert-success">
+                                        {{successMsg}}<br>{{passwordMsg}}
+                                    </div> -->
+
+                            </div>
+
+
+                            <input type="submit" class="disable_common_btn" id="submitbutton" value="SAVE CHANGES" />
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <div class="profile_bottom" id="profile_footer">
+                    <button type="button" class="common_btn pull-right" (click)="EditProfile()" *ngIf="showDetails">EDIT PROFILE INFORMATION</button>
+                    <div class="clearfix"></div>
+                    <div class="edit_profile_bottom" *ngIf="EditDetails">
+                        <input type="button" class="common_btn" value="CANCEL" (click)="EditProfile()" />
+                        <input type="button" class="common_btn" value="SAVE CHANGES" (click)="buttonsubmit()" />
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

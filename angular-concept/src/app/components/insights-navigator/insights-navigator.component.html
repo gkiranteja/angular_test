@@ -1,0 +1,74 @@
+<div class="right_content" id="main">
+  <div class="right_content_top">
+    <div class="input_container">
+      <div class="select_container">
+        <select [(ngModel)]="businessSelected" (change)="changeFilter()" class="container_item">
+          <option value="ALL">Select Function</option>
+          <option *ngFor="let filter of businessFilterList" value="{{filter.category_id}}">{{filter.category_name}}</option>
+        </select>
+        <select [(ngModel)]="reportTypeSelected" (change)="changeFilter()" class="container_item">
+          <option value="ALL">Select Report Type</option>
+          <option *ngFor="let filter of reportTypeFilterList" value="{{filter.category_id}}">{{filter.category_name}}</option>
+        </select>
+        <select [(ngModel)]="industrySelected" (change)="changeFilter()" class="container_item">
+          <option value="ALL">Select Industries</option>
+          <option *ngFor="let filter of industriesFilterList" value="{{filter.category_id}}">{{filter.category_name}}</option>
+        </select>
+      </div>
+      <div class="submit_btn">
+        <div class="submit_text" (click)="applyFilters()">APPLY</div>
+      </div>
+    </div>
+    <div class="search_container">
+      <span>
+        <img src="./../assets/images/searchblack.svg" (click)="applyFilters()" style="cursor: pointer;" /> </span>
+      <input type="search" class="" name="search" id="searchStr" placeholder="Search" [(ngModel)]="searchText" (keypress)="changeFilter($event)">
+    </div>
+    <div class="cost_container">
+      <div class="container_item">
+        <div class="cost_number">14</div>
+        <div class="cost_text">Business and IT leadership Roles</div>
+      </div>
+      <div class="container_item">
+        <div class="cost_number">16</div>
+        <div class="cost_text">Industries</div>
+      </div>
+      <div class="container_item">
+        <div class="cost_number">5,000 +</div>
+        <div class="cost_text">Unique Companies</div>
+      </div>
+      <div class="container_item">
+        <div class="cost_number">06</div>
+        <div class="cost_text">Regions Worldwide</div>
+      </div>
+      <div class="container_item">
+        <div class="cost_number">8,000 +</div>
+        <div class="cost_text">Respondents</div> 
+      </div>
+    </div>
+    <div class="card_container">
+      <div class="card" *ngFor="let report of allReports">
+        <div class="card-body">
+          <h5 class="card-title" (click)="navigateToReportDetails(report)" [innerHTML]="report.title"></h5>
+          <a href="#" class="btn btn-primary read_more" routerLink="/detail/{{report.nid}}">READ MORE</a>
+        </div>
+      </div>
+      <div class="no-results" *ngIf="hasNoResults">No results found</div>
+    </div>
+    <div class="pagination-buttons-wrapper">
+      <ul>
+        <li (click)="changePaginationBtns('Prev')" class="page-item" [ngClass]="{'cpointer':currentPage==0}">
+          <a class="page-link" href="#" [ngClass]="{'cpointer':currentPage==0}">
+            <img src="./../assets/images/left-arrow.svg" style="width: 12px;" />
+          </a>
+        </li>
+        <li *ngFor="let page of pages" (click)="doPagination(page)" [ngClass]="{'selected':(currentPage==(page - 1))}">{{page}}</li>
+        <li (click)="changePaginationBtns('Next')" class="page-item" [ngClass]="{'cpointer':currentPage==(totalPages-1)}">
+          <a class="page-link" href="#" [ngClass]="{'cpointer':currentPage==(totalPages-1)}">
+            <img src="./../assets/images/right-arrow.svg" style="width: 12px;" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

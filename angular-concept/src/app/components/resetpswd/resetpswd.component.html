@@ -1,0 +1,56 @@
+<!-- <p>
+  reset password works!
+</p> -->
+
+
+
+<div class="forgot_password_main">
+    <div class="row marg_0">
+        <div class="col-sm-6 pad_0">
+            <div class="forgot_left">
+                <div class="forgot_heading">
+                    <h2>Reset Password?</h2>
+                </div>
+                <div class="input_fields">
+                    <form #resetForm="ngForm" (ngSubmit)="onClickSubmit(resetForm.value)">
+                        <div ngModelGroup="password" #userPassword="ngModelGroup" required>
+                            <div class="form-group">
+                                <label for="inputPassword"></label>
+                                <input type="password" ngModel name="pwd" class="form-control common_input" id="inputPassword" placeholder="New Password" minlength="8" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword"></label>
+                                <input type="password" ngModel name="confirmPwd" class="form-control common_input" id="confirmPassword" placeholder="Confirm New Password">
+                            </div>
+                            <div *ngIf="(userPassword.invalid|| userPassword.value?.pwd != userPassword.value?.confirmPwd) && (userPassword.touched)" class="alert alert-danger">
+                                <div *ngIf="userPassword.invalid; else nomatch">
+                                    Password needs to be more than 8 characters
+                                </div>
+                                <ng-template #nomatch>
+                                    Passwords don't match
+                                </ng-template>
+                            </div>
+                        </div>
+                        <input type="submit" value="submit" [disabled]="!resetForm.form.valid" class="common_btn">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 pad_0">
+            <div class="forgot_right">
+                <div class="right-content">
+                    <h4>THE STORY BEHIND THE NAME</h4>
+                    <div class="logo-block">
+                        <img src="./../assets/images/logo.png" class="logo img-responsive" alt="logo">
+                    </div>
+                    <!-- <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing  Ipsum
+                        passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum,It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                        with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum,It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                        software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

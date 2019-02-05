@@ -1,0 +1,23 @@
+<div class="container">
+  <!-- Encryption block -->
+  <!-- <div>
+    key: <input type="text" [(ngModel)]="key" />
+    Convert : <input type="text" [(ngModel)]="context" />
+    <button (click)="crypto('encrypt')">Encrypt</button>
+    <button (click)="crypto('')">Decrypt</button>
+  </div> -->
+  <!-- Encryption block -->
+  <input type="text" [(ngModel)]="fileUrl" />
+  <button (click)="pwdModal=true">Submit</button>
+  <div class="pwd-modal" *ngIf="pwdModal">
+    <input type="text" [(ngModel)]="encryptKey" />
+    <button (click)="saveOffline({name: '', url: fileUrl})">Submit</button>
+  </div>
+  <button (click)="deleteFile('save')">Delete</button>
+  <div *ngIf="onlineLibraries">
+    <div *ngFor="let library of onlineLibraries" (click)="saveOffline(library)">{{library.name}}</div>
+  </div>
+  <div *ngIf="offlineLibraries">
+    <div *ngFor="let library of offlineLibraries" (click)="openFile(library.url)">{{library.name}}</div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="88px" height="88px" viewBox="0 0 88 88" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>direcction</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="AD1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="direcction" fill-rule="nonzero">
+            <polygon id="Path-11" fill="#B8D2F2" points="34.1914062 48.8098022 0.745489501 15.3638855 12.059198 4.050177 50.1914062 42.1823853 50.1914062 87.453125 34.1914062 87.453125"></polygon>
+            <path d="M61.9861072,42.934317 L34,15.3638855 L45.4842838,4.050177 L78.2273371,36.3069 C82.0429745,40.065864 84.1914063,45.1982468 84.1914063,50.5544488 L84.1914063,87.453125 L67.9501764,87.453125 L67.9501764,57.1818657 C67.9501764,51.8256638 65.8017447,46.693281 61.9861072,42.934317 Z" id="Path-11-Copy" fill="#609DE5" transform="translate(59.095703, 45.751651) scale(-1, 1) translate(-59.095703, -45.751651) "></path>
+            <polyline id="Rectangle-15" fill="#609DE5" points="53.9892578 0.40234375 87.9892578 0.40234375 87.9892578 34.4023438"></polyline>
+        </g>
+    </g>
+</svg>

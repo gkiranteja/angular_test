@@ -1,0 +1,79 @@
+<div class="" style="position: relative;">
+
+    <!-- Trigger the modal with a button -->
+    <!-- <button type="button" class="btn btn-info btn-lg reports_btn " data-toggle="modal" data-target="#myModal"
+        #closeModal>My Role</button> -->
+
+    <!-- Modal -->
+    <div class="modal fade common_modalpopup" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span class="fa fa-close"></span>
+                    </button>
+                    <h4 class="modal-title">My Role</h4>
+                </div>
+                <div class="modal-body row">
+                    <form #rolesForm="ngForm" (ngSubmit)="onClickSubmit(rolesForm.value)">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Industry</label>
+                                    <select name="industry" id="industry" [(ngModel)]="selectedIndustry">
+                                        <option *ngFor="let item of industrys" [ngValue]="item.category_id">{{item.category_name}}</option>
+                                        <!-- <option [ngValue]="">--Select Industry--</option> -->
+                                        <!-- <option [ngValue]="'360'">Automotive</option>
+                                        <option [ngValue]="'353'">Banking</option>
+                                        <option [ngValue]="'424'">Construction and Infrastructure</option>
+                                        <option [ngValue]="'425'">Consumer Products and Retail</option>
+                                        <option [ngValue]="'354'">Financial Services</option>
+                                        <option [ngValue]="'355'">Healthcare</option>
+                                        <option [ngValue]="'352'">Hi Tech</option>
+                                        <option [ngValue]="'449'">Insurance Health</option>
+                                        <option [ngValue]="'363'">Insurance Life</option>
+                                        <option [ngValue]="'426'">Insurance P and C</option>
+                                        <option [ngValue]="'364'">Logistics</option>
+                                        <option [ngValue]="'356'">Pharma</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Function</label>
+                                    <select name="business" id="business" [(ngModel)]="selectedBusiness">
+                                        <!-- <option *ngFor="let busines of business; let dataIndex=index" [ngValue]="busines.category_id">{{busines.category_name}}
+                                        </option> -->
+                                        <!-- <option [ngValue]="">--Select Functions--</option> -->
+                                        <option *ngFor="let item of business" [ngValue]="item.category_id">{{item.category_name}}</option>
+                                        <!-- <option [ngValue]="'450'">Board &amp; CEO</option>
+                                        <option [ngValue]="'342'">Marketing</option>
+                                        <option [ngValue]="'343'">Service Management</option>
+                                        <option [ngValue]="'344'">Sales Management</option>
+                                        <option [ngValue]="'345'">Research and Development</option>
+                                        <option [ngValue]="'346'">Supply Chain</option>
+                                        <option [ngValue]="'347'">Procurement</option>
+                                        <option [ngValue]="'348'">Manufacturing</option>
+                                        <option [ngValue]="'349'">Finance and Accounting</option>
+                                        <option [ngValue]="'350'">Human Capital</option>
+                                        <option [ngValue]="'456'">Information Technology</option>
+                                        <option [ngValue]="'351'">Legal</option>
+                                        <option [ngValue]="'377'">CIO</option>
+                                        <option [ngValue]="'283'">Cloud</option>
+                                        <option [ngValue]="'285'">Analytics</option>
+                                        <option [ngValue]="'284'">Digital</option>
+                                        <option [ngValue]="'286'">Security</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row submit_btn">
+                            <input type="submit" value="SUBMIT" class="submit_text">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

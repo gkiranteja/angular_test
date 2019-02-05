@@ -1,0 +1,582 @@
+<!-- <!-- <ul>
+    <li *ngFor="let item of items">
+        <div>
+            <img src="{{ item.image }}" style="width: 150px; height: 150px;" /> Title: {{ item.title }}<br /> Date: {{ item.date }}<br /> Type: {{ item.type }}
+        </div>
+    </li>
+</ul>
+<div id="main" class="right_content">
+    <div class="right_content_top">
+            <h3 class="sub_heading">My Library</h3>
+        <!-- <a routerLink="/home">Home</a>
+        <header>
+            <!-- <div class="search_cart pull-right">
+                <ul>
+                    <li><a href="#"><span class="fa fa-search"></span></a> </li>
+                    <li> <a href="#" class=""><span class="fa fa-shopping-cart badge"  data-badge="4"></span></a> </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </header>
+        <div class="mylibrary_main">
+            <div class="library_item" *ngFor="let item of items">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img src="{{ item.image }}" class="img-responsive" alt="" />
+                    </div>
+
+                    <div class="col-sm-7">
+                        <div class="news_txt">
+                            <!-- <button type="button" class="btn common_btn technology_btn"> {{ item.type }}</button>
+                            <h4>
+                                <a (click)="goToDetials(item.unique_id)">{{ item.title }}</a>
+                                <!-- <button (click)="routeToDetials($event,item.nid)">{{ item.title }}</button> 
+                            </h4>
+                            <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum has been the industry's standard dummy text ever since the
+                                1500s
+                            </p>
+                            <p class="date_year">
+                                <span class="icon-cal_grey"></span>{{ item.date }}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-1">
+                        <!-- <ul class="library_media">
+                            <li>
+                                <a href="#">
+                                    <span class="icon-dele_rep">
+                                                <img src="./../assets/images/down_rep.svg" class="img-responsive"/>
+                                            </span>
+                                </a>
+                                <a href="#" style="display:none">
+                                    <span class="icon-dele_rep">
+                                            <img src="./../assets/images/dele_rep.svg" class="img-responsive"/>
+                                    </span>
+                                </a>
+                            </li> -->
+<!-- <li><a href="#"><span class="icon-share_rep"><span class="path1"></span><span class="path2"></span></span></a></li>
+                            <li><a href="#"><span class="icon-down_rep"><span class="path1"></span><span class="path2"></span></span></a></li> -->
+<!-- </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="error_txt" *ngIf="errorMsg"> <span style="color:red">No Results Found</span></div>
+</div> -->
+
+
+
+
+<!-- Mylibrary new UI -->
+<div class="home_main_div">
+    <div class="home_library_tabs">
+        <div class="tab-content">
+            <div class="tab-pane fade in active">
+                <div class="tab_content_in">
+                    <div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <!-- Wrapper for slides -->
+                        <div class="corousel-heading">Marketing Transformation in Automotive industry:The CXO Library</div>
+                        <div class="carousel-inner">
+                            <div class="item active padding-container">
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">Compass Guide in Marketing: Automotive</div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">Training and change management in Marketing: Automotive</div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">AI and automation in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">Compass Guide in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">Training and change management in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">AI and automation in Marketing: Automotive</div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">Compass Guide in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">Training and change management in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">AI and automation in Marketing: Automotive</div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel1" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel1" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade in active recommended_img_div">
+                <div class="tab_content_in">
+                    <div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <!-- Wrapper for slides -->
+                        <div class="corousel-heading">Analytics Transformations in Automotive industry</div>
+                        <div class="carousel-inner">
+                            <div class="item active padding-container">
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">Compass Guide in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">Training and change management in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">AI and automation in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">Compass Guide in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">Training and change management in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">AI and automation in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">Compass Guide in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">Training and change management in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 main-content">
+                                    <div class="tab_img">
+                                        <img src="./../assets/images/onboardingtwo.jpg" alt="Los Angeles">
+                                        <div class="image-text">
+                                            <div class="image-description">AI and automation in Marketing: Automotive </div>
+                                            <div class="horizontal_between_alignment">
+                                                <div>
+                                                    <img src="./../assets/images/full-size.svg" alt="fullsize" />
+                                                    <span>Read Now</span>
+                                                </div>
+                                                <div class="more-options">
+                                                    <img src="./../assets/images/exit.svg" alt="exit" />
+                                                    <span>More Options</span>
+                                                </div>
+                                                <div class="rating-star">
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star.svg" alt="star" />
+                                                    <img src="./../assets/images/star (1).svg" alt="star" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarouse2" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel2" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

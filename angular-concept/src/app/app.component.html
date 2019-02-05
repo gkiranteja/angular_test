@@ -1,0 +1,43 @@
+<div class="search_cart pull-right" *ngIf="sideMenue && cartCount >= -1" [hidden]="networkStatus()"> 
+    <ul>
+        <!-- <li>
+      <a href="#">
+        <span class="search">
+          <img src="./../assets/images/search.svg" />
+        </span>\\
+      </a>
+    </li> -->
+        <!-- <li *ngIf="network && cartService.showCart">
+            <a routerLink="/cart" class="">
+                <span class="badge" attr.data-badge="{{cartService.cartCount == -1? 0 : cartService.cartCount}}">
+                    <img src="./../assets/images/cart.svg" />
+                </span>
+            </a>
+        </li> -->
+</ul>
+</div>
+<div class="row-offcanvas row-offcanvas-left">
+    <app-sidemenu *ngIf="sideMenue" [network]="network" [activeMenue]="currentScreen"></app-sidemenu>
+    <app-pop-up *ngIf="showModal" [message]="message" (close)="closeAlertModal()"></app-pop-up>
+	<app-reports-popup *ngIf="network && sideMenue && cartService.showCart"></app-reports-popup>
+    <router-outlet> 
+
+        <!-- <a routerLink="/library">Library</a> | 
+  <a routerLink="/mylibrary">My library</a> | 
+  <a routerLink="/cart">Cart</a>
+    <button *ngIf="login == true" (click)="logout()">Logout</button> -->
+        <!-- <app-signup-form></app-signup-form> -->
+        <!-- <app-login></app-login> -->
+        <!-- <app-forgotpswd></app-forgotpswd> -->
+        <!-- <app-resetpswd></app-resetpswd> -->
+        <!-- <nav>
+         <a routerLink="./components/login/login.component">login</a>
+        <a routerLink="./components/resetpswd/resetpswd.component">resetpswd</a>
+        <a routerLink="./components/forgotpswd/forgotpswd.component">forgotpswd</a>
+        <a routerLink="./components/signup-form/signup-form.component">signup-form</a> 
+   </nav> -->
+    </router-outlet>
+</div>
+<!-- <ngx-ui-loader></ngx-ui-loader>  -->
+<ngx-ui-loader [fgsColor]="foregroundcolor" [pbColor]="backgroundcolor"></ngx-ui-loader>
+<div *ngIf="loaderMessage" style="padding:20px; background-color:#ddd; position:absolute;bottom:0;right:0">{{loaderMessage}}</div>

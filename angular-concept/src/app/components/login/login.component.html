@@ -1,0 +1,109 @@
+<div class="login-block">
+    <div class="left split">
+        <div class="login_bg" style="background-image: url('./../assets/images/login_left_bg.png')">
+            <h2>Login</h2>
+            <br><br><br>
+            <form #loginForm="ngForm" (ngSubmit)="onClickSubmit(loginForm.value)">
+
+                <div class="user_field">
+
+                    <!-- <input type="text" name="userName" #uname="ngModel" placeholder="Username" ngModel required minlength="8" maxlength="30" ng-pattern="/^[a-zA-Z0-9\_\- ]*$/"> -->
+                    <input type="text" id="userName" name="userName" #uname="ngModel" placeholder="Username" ngModel required (keyup)="validation($event.target.value,$event.target.id)" maxlength="45"/>
+                    <i class="error_alert"  *ngIf="whiteSpace_Username" style="font-weight: bold;"> Please Enter Valid Username </i>
+                    <i class="error_alert"  *ngIf="noSpcae" style="font-weight: bold;"> Do Not Enter Space </i>
+                    <!-- <div class="alert alert-danger" [hidden]="uname.valid"> Should not contain space </div> -->
+                    <!-- <i class="error_alert" [hidden]="uname.valid"> User Name Should be in Between 8-30 Chars </i> -->
+                </div>
+                <br><br>
+                <div class="password_field">
+
+                    <!-- <input type="{{showPassword}}" name="password"  #pwd="ngModel" placeholder="Password" ngModel required minlength="8" maxlength="15">     -->
+                    <input type="{{showPassword}}"  id="password" name="password"  #pwd="ngModel" placeholder="Password" ngModel required  (keyup)="validation($event.target.value,$event.target.id)" />                                    
+                    <i class="error_alert"  *ngIf="whiteSpace_Password"  style="font-weight: bold;"> Please Enter Valid Password </i>
+                    <i class="error_alert"  *ngIf="error_msg && !noSpcae"  style="font-weight: bold;">Please Enter Valid Username and Password</i>
+                    <!-- <i class="error_alert" [hidden]="pwd.valid">Password Should be in Between 8-15 Chars</i> -->
+                    <i class="view-eye fa fa-eye" (click)="toggleShowPassword()" style="cursor: pointer;"></i>
+                </div>
+
+                <!-- <div (click)="forgotPassword()" style=" cursor: pointer; ">Forgot Password</div> -->
+
+                <div class="nav-item forget-password" [routerLinkActive]="['active']">
+                    <a class="nav-link" [routerLink]="['../forgotpswd']" style="font-weight: bold;">Forgot Password?</a>
+                </div>
+
+                <!-- <div class="policy-block clearfix">
+                    <p>By tapping to Login you agree to the</p>
+                    <p><a href=''>Terms of use</a> & <a href=''>Privacy Policy</a></p>
+                </div> -->
+                <div class="policy-block clearfix" [routerLinkActive]="['active']">
+                    <p>By tapping to Login you agree to the</p>
+                    <p><a href='' data-toggle="modal" data-target="#myModalterm" (click)="getTermsAndConditions()">Terms of Use</a> &
+                        <a href='' data-toggle="modal" data-target="#myModalpolicy" (click)="getPrivacyPolicy()">Privacy Policy</a></p>
+                </div>
+                <div class="terms_use_modal">
+                    <div class="modal fade" id="myModalterm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span class="fa fa-close"></span></button>
+                                    <h4 class="modal-title">Terms of Use</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="terms_use_body" style="text-align:justify;">
+                                        {{ termsText }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="terms_use_modal">
+                    <div class="modal fade" id="myModalpolicy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog " role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span class="fa fa-close"></span></button>
+                                    <h4 class="modal-title">Privacy Policy</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="terms_use_body privacy_body" [innerHTML]="privacyPolicyText">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="login-button">
+                    <input type="submit" value="Login">
+                </div>
+                <div class="nav-item register-block" [routerLinkActive]="['active']">
+                    <p>Please visit <a class="nav-link" href="https://www.Trasers.com" target="_blank">Trasers.com</a> for registration
+
+                </div>
+            </form>
+            <!-- <div>don't you have an account <span (click)="signup()" style=" cursor: pointer; "> signup </span></div> -->
+            <!-- <div class="nav-item register-block" [routerLinkActive]="['active']">
+                 <p>New User? <a class="nav-link" [routerLink]="['../signup-form']" >Register</a>
+                    
+            </div> -->
+
+
+        </div>
+    </div>
+    <div class="right split">
+        <div class="right-content">
+            <!-- <h4>{{loginBodyContent[0].title}}</h4> -->
+            <h4>THE STORY BEHIND THE NAME</h4>
+            <div class="logo-block">
+                <!-- <img [src]="loginBodyContent[0].image" class="logo img-responsive" alt="logo"> -->
+                <img src="./../assets/images/logo.png" class="logo img-responsive" alt="logo">
+            </div>
+            <p class="logo_tagline">BUSINESS TRANSFORMATION RESEARCH</p>
+            <div class="rightcontent_width" *ngIf="loginBodyContent">
+                <div [innerHTML]="loginBodyText"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+.is-invalid {
+    border: 1px solid #b81010;
+}
+
+.invalid-feedback {
+    color: #b81010;
+}

@@ -1,0 +1,22 @@
+
+<div class="modal fade in common_modalpopup"  role="dialog" id="alert_modal" style="display:block">  
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div  class="modal-content">
+      
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" (click)="closeAlertModal()"><span class="fa fa-close" ></span></button>
+            <h4 class="modal-title">Trasers</h4>
+        </div>
+     
+      <div class="modal-body">
+      {{text}}
+      </div>
+      <div class="modal-footer" *ngIf="routeTo"> 
+        <button type="button" class="btn btn-default" (click)="closeAlertModal()">OK</button>
+      </div>
+    </div>
+    
+  </div>
+</div>

@@ -1,0 +1,149 @@
+.right_content {
+    background: #fff;
+    // width: calc(100% - 250px);
+    // margin-left: 250px;
+    width: calc(100% - 100px);
+    margin-left: 100px;
+    overflow-x: hidden;
+    .right_content_top {
+        padding: 0px !important;
+    }
+    .right_content_top.bg_gray{
+        background-color: #f1f1f1;
+    }
+}
+
+.disable_common_btn {
+    display: none;
+}
+
+.profile_main_bg {
+    .right_content {
+        margin-top: 0px !important;
+    }
+    .profile_main {
+        .profile_top {
+            background: #f1f1f1;
+            padding: 30px 100px 30px 30px;
+            h3 {
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+            .profile_details {
+                .form-group {
+                    margin-bottom: 20px;
+                    label {
+                        display: block;
+                        font-weight: normal;
+                        margin-bottom: 0px;
+                        /*&.field {}*/
+                        &.name {
+                            font-size: 16px;
+                            font-weight: 500;
+                            word-wrap: break-word;
+                        }
+                    }
+                    input,
+                    select {
+                        background: transparent;
+                        border: none;
+                        border-bottom: 1px solid #c7c2c2;
+                        font-size: 14px;
+                        font-weight: 500;
+                        width: 100%;
+                        box-shadow: none;
+                        border-radius: 0px;
+                        padding: 0px;
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                }
+            }
+            .social_profiles {
+                // background: #fff;
+                padding: 20px 40px;
+                h4 {
+                    margin: 20px 0px;
+                }
+                .social_profile_in {
+                    margin-bottom: 20px;
+                    display: flex;
+                    align-items: center;
+                    span {
+                        font-size: 40px;
+                        margin-right: 20px;
+                    }
+                    input {
+                        background: transparent;
+                        border: none;
+                        border-bottom: 1px solid #c7c2c2;
+                        font-size: 16px;
+                        font-weight: 500;
+                        width: 100%;
+                        box-shadow: none;
+                        border-radius: 0px;
+                        padding: 0px;
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                }
+            }
+            .password_fields {
+                margin: 50px 0px;
+            }
+        }
+        .profile_bottom {
+            background: #09527f;
+            padding: 30px 40px;
+            // position: absolute;
+            // bottom: 0px;
+            // left: 0px;
+            .common_btn {
+                text-transform: uppercase;
+                padding: 8px 20px;
+                font-weight: 600;
+                letter-spacing: 0.6px;
+            }
+            .edit_profile_bottom {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                h3 {
+                    margin: 0px;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.mydata_profile {
+    background: #eeeeee;
+    padding: 20px 40px;
+    border: 1px solid #d2d1d1;
+    h4 {
+        color: #09527f;
+        margin: 20px 0px;
+    }
+    .mydata_profile_in {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        span {
+            // font-size: 18px;
+            margin-right: 20px;
+        }
+    }
+}
+@media screen and (min-width: 1920px){
+    .right_content_top  {
+       height:100vh !important;
+    }
+    .profile_bottom{
+        position: absolute !important;
+        bottom: 0 !important;
+        width: 87% !important;
+    }
+}

@@ -1,0 +1,58 @@
+.forgot_password_main {
+    font-family: 'Open Sans';
+    .forgot_left {
+        // background-image: url("./../assets/images/login_left_bg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        background-position: left center;
+        padding: 30px 50px 30px 80px;
+        .forgot_heading {
+            padding: 40px 0px;
+            h2 {
+                color: #fff;
+                font-weight: bold;
+                font-family: 'Open Sans';
+            }
+            p {
+                color: #fff;
+            }
+        }
+        .input_fields {
+            .form-control {
+                box-shadow: none;
+                font-size: 18px;
+            }
+        }
+    }
+    .forgot_right {
+        h4 {
+            margin-bottom: 5px;
+        }
+        .right-content {
+            .rightcontent_width {
+                width: auto !important;
+                overflow-y: auto;
+                overflow-x: hidden;
+                position: absolute;
+                height: 100vh;
+                max-height: 70vh;
+                padding: 0px 15px;
+            }
+        }
+    }
+    .forgot_submit {
+        margin-top: 60px;
+    }
+}
+
+.logo_tagline {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 1440px) {
+    .login-block .right.split .right-content .rightcontent_width {
+        max-height: 61vh !important;
+    }
+}

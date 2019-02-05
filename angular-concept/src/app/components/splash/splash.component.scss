@@ -1,0 +1,142 @@
+.splash {
+    img {
+        width: 100%;
+        height: 100vh;
+    }
+}
+
+.tutorial-carousel {
+    .item {
+        img {
+            width: 100%;
+            height: calc(100vh - 188px);
+        }
+    }
+    .carousel-control.left {
+        background-color: #2e2c27;
+        width: 35px;
+        height: 60px;
+        margin: auto 0;
+        border-bottom-right-radius: 90px;
+        border-top-right-radius: 90px;
+        color: #fc6b02;
+        opacity: 0.8;
+        .fa {
+            margin-top: 14px;
+            margin-left: -14px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #fc6b02;
+        }
+    }
+    .carousel-control.right {
+        background-color: #2e2c27;
+        width: 35px;
+        height: 60px;
+        margin: auto 0;
+        border-bottom-left-radius: 90px;
+        border-top-left-radius: 90px;
+        color: #fc6b02;
+        opacity: 0.8;
+        .fa {
+            margin-top: 14px;
+            margin-left: 14px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #fc6b02;
+        }
+    }
+}
+
+.get-started-container {
+    height: 188px;
+    width: 100%;
+    background-color: #09527f;
+    padding: 20px;
+    .get-started-item {
+        display: flex;
+        .get-started-card {
+            flex: shrink;
+            width: 60%;
+        }
+        .get-started-divider {
+            display: flex;
+            flex: 1;
+        }
+        .get-started-heading {
+            font-size: 24px;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        .get-started-desc {
+            color: rgb(218, 218, 218);
+            font-size: 18px;
+            font-weight: 300;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .get-started-btn {
+            height: 55px;
+            max-width: 210px;
+            color: #fff;
+            background-color: #fc6b02;
+            font-size: 20px;
+            border-radius: 35px;
+            padding: 15px 10px;
+            text-align: center;
+            margin-top: 45px;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .get-started-desc {
+        width: 85%;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+    .get-started-btn {
+        max-width: 258px;
+        min-width: 150px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+    .get-started-desc {
+        font-size: 16px;
+    }
+    .get-started-btn {
+        max-width: 358px;
+        min-width: 160px;
+        font-size: 16px;
+    }
+    .get-started-desc {
+        width: 85%;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .tutorial-carousel .item img {
+        width: 80%;
+        height: calc(100vh - 188px);
+        display: block;
+        margin: 0 auto;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .tutorial-carousel .item img {
+        width: 70%;
+        height: calc(100vh - 188px);
+        display: block;
+        margin: 0 auto;
+    }
+}
+@media screen and (min-width: 1440px) {
+    .tutorial-carousel .item img {
+        width: 70%;
+        height: calc(100vh - 188px);
+        display: block;
+        margin: 0 auto;
+    }
+}

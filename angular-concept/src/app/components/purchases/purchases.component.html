@@ -1,0 +1,81 @@
+<!-- <ul>
+    <li *ngFor="let item of items">
+        <div>
+            <img src="{{ item.image }}" style="width: 150px; height: 150px;" /> Title: {{ item.title }}<br /> Date: {{ item.date }}<br /> Type: {{ item.type }}
+        </div>
+    </li>
+</ul> -->
+<div class="right_content" id="main">
+    <div class="right_content_top">
+        <h3 class="sub_heading">My Purchases</h3>
+
+        <!-- <a routerLink="/home">Home</a> -->
+        <header>
+            <!-- <div class="search_cart pull-right">
+              <ul>
+                  <li><a href="#"><span class="fa fa-search"></span></a> </li>
+                  <li> <a href="#" class=""><span class="fa fa-shopping-cart badge"  data-badge="4"></span></a> </li>
+              </ul>
+          </div> -->
+            <div class="clearfix"></div>
+        </header>
+        <div class="mylibrary_main">
+            <div class="library_item" *ngFor="let item of items">
+                <div class="row">
+                    <div class="col-sm-4 purchase-failed-image">
+                        <img src="{{ item.image }}" class="img-responsive" alt="" />
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="news_txt">
+                            <!-- <button type="button" class="btn common_btn"> {{ item.type }}</button> -->
+                            <h4>
+                                <a routerLink="/detail/{{item.nid}}">{{ item.title }}</a>
+                            </h4>
+                            <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum has been the industry's standard dummy text ever since the
+                              1500s
+                          </p> -->
+                            <p class="date_year">
+                                <span class="icon-cal_grey"></span>{{ item.date }}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <ul class="library_media">
+                            <!-- <li>
+                                <a href="#" (click)="saveFile(item.nid)">
+                                    <span class="icon-dele_rep">
+                                        <img src="./../assets/images/down_rep.svg" class="img-responsive" />
+                                    </span>
+                                </a>
+                                <a href="#" style="display:none">
+                                    <span class="icon-dele_rep">
+                                        <img src="./../assets/images/dele_rep.svg" class="img-responsive" />
+                                    </span>
+                                </a>
+                            </li> -->
+                            <!-- <li><a href="#"><span class="icon-share_rep"><span class="path1"></span><span class="path2"></span></span></a></li>
+                            <li><a href="#"><span class="icon-down_rep"><span class="path1"></span><span class="path2"></span></span></a></li> -->
+                        </ul>
+
+
+
+
+
+                        <!-- <ul class="library_media"> -->
+                        <!-- <li>
+                              <a href="#" (click)="removeItem(item.nid)">
+                                  <span class="icon-dele_rep">
+                                      <span class="path1"></span>
+                                  <span class="path2"></span>
+                                  </span>
+                              </a>
+                          </li> -->
+                        <!-- <li><a href="#"><span class="icon-share_rep"><span class="path1"></span><span class="path2"></span></span></a></li>
+                          <li><a href="#"><span class="icon-down_rep"><span class="path1"></span><span class="path2"></span></span></a></li> -->
+                        <!-- </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="error_txt" *ngIf="errorMsg"> <span style="color:red">No Results Found</span></div>
+</div>

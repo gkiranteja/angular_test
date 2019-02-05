@@ -1,0 +1,161 @@
+<div class="right_content" id="main">
+    <div class="right_content_top">
+        <div class="contact_form">
+            <!-- <header>
+                 <div class="clearfix"></div>
+                 </header> -->
+            <div class="home_tabs">
+                <ul>
+                    <li (click)="getCurrentTab('contact');" [ngClass]="[(showActiveData == 'contact') ? 'active' : 'non-active']">
+                        <a href="#">
+                            <span>Contact Us</span>
+                        </a>
+                    </li>
+                    <li (click)="getCurrentTab('message')" [ngClass]="[(showActiveData == 'message') ? 'active' : 'non-active']">
+                        <a href="#">
+                            <span>Send us a Message</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="Contact_main" *ngIf="showContacts">
+                <h3>All Locations</h3>
+                <div class="countries_carousel">
+                    <div class="left_arrow" (click)="scrollLeft()">
+
+                    </div>
+                    <div class="center_div">
+                        <ul>
+                            <li *ngFor="let city of citysToFill; let i = index" [ngClass]="{'active':city == activeFlag}" (click)="getSelectedCityInfo(city , i)">
+                                {{city}}</li>
+                        </ul>
+                    </div>
+                    <div class="right_arrow" (click)="scrollRight()"></div>
+                </div>
+                <div class="row map_mainblock">
+                    <div class="col-sm-3">
+                        <div class="countries_details">
+                            <p>{{title}}</p>
+                            <p>{{address1}}</p>
+                            <p>{{address2}}</p>
+                            <p>{{country}}</p>
+                            <p>
+                                <b>
+                            <span>Tel: </span>{{phone}}</b>
+                            </p>
+                            <p>
+                                <b>
+                            <span>Fax: </span>{{fax}}</b>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="map_block">
+                            <div class="location_address">
+                                <div class="col-sm-6 no-padding ">
+                                    <h5>{{title}}</h5>
+                                    <p>{{fullAddress}}</p>
+                                    <a (click)="showLargeMap()">View Large map</a>
+                                </div>
+                                <div class="col-sm-6 no-padding ">
+                                    <!--
+                                    <div class="text-left direction-block">
+                                        <img src="./../assets/images/direcction.svg" />
+                                        <a>Directions</a>
+                                    </div
+                                    -->
+                                    <div class="saveblock" (click)="saveMapLocation()">
+                                        <img *ngIf="!isMapSaved" src="./../assets/images/grey-star.svg" />
+                                        <img *ngIf="isMapSaved" src="./../assets/images/gray_star.png" />
+                                        <a *ngIf="!isMapSaved">Save</a>
+                                        <a *ngIf="isMapSaved">Saved</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <agm-map [latitude]="latitude" [longitude]="longitude" *ngIf="showContacts">
+                                <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+                            </agm-map>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+                 <div class="col-sm-3 country_main_in" *ngFor="let contact of contacts; let i = index" data-mh="my-group">
+                     <div class=" country_contact ">
+                         <h4>{{contact.title}}</h4>
+                         <div class="address ">
+                             <ul>
+                                 <li *ngIf="contact.address2">{{contact.address2}}</li>
+                                 <li *ngIf="contact.fax">{{contact.fax}}</li>
+                                 <li *ngIf="contact.postcode">{{contact.postcode}}</li>
+                                 <li *ngIf="contact.phone">{{contact.phone}}</li>
+                                 <li *ngIf="contact.country">{{contact.country}}</li>
+                                 <li *ngIf="contact.longitude">{{contact.longitude}}</li>
+                                 <li *ngIf="contact.latitude">{{contact.latitude}}</li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-sm-3 country_main_in" *ngFor="let contact of contacts; let i = index" data-mh="my-group">
+                     <div class="address" class="col-sm-3 country_main_in" [attr.id]="'maps-' + i">
+                     </div>
+                 </div>
+                 </div> -->
+            <div *ngIf="showSendMessage">
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <form #contacsForm="ngForm" id="contacsForm" name="contacsForm" (ngSubmit)="onSubmit(contacsForm.value)">
+                            <div class="form-group">
+                                <!-- <label class="field">First Name *</label> -->
+                                <input type="text" id="full_name" name="full_name" placeholder="Full Name" ngModel/>
+                            </div>
+                            <div class="form-group">
+                                <!-- <label class="field">Email *</label> -->
+                                <input type="text" id="email" name="email" placeholder="Email ID" ngModel/>
+                            </div>
+                            <div class="form-group">
+                                <!-- <label class="field">Phone Number  *</label> -->
+                                <input type="text" id="phone" name="phone" placeholder="Phone Number" ngModel />
+                            </div>
+                            <div class="form-group">
+                                <!-- <label class="field">Company or Org Name  *</label> -->
+                                <input type="text" id="company" name="company" placeholder="Company or Org Name" ngModel/>
+                            </div>
+                            <div class="form-group">
+                                <!-- <label class="field">Purpose *</label> -->
+                                <select class="form-control" placeholder="Purpose" id="purpose" name="purpose" [(ngModel)]="selectedPurpose">
+                                    <option *ngFor="let item of purpose; let dataIndex=index" [ngValue]="item">{{item}}
+                                    </option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <!-- <label class="field">Message  *</label> -->
+                                <textarea rows="4" id="message" name="message" placeholder="Message" ngModel>Message</textarea>
+                            </div>
+                            <input type="submit" class="disable_common_btn" id="submitbutton" value="SUBMIT" />
+                        </form>
+                    </div>
+                </div>
+                <p *ngIf="fbFlag" class="response">{{fbMsg}}</p>
+                <p *ngIf="FormValidation" class="validation">{{validationMsg}}</p>
+                <!-- Trigger the modal with a button -->
+                <div data-toggle="modal" data-target="#myModal1"></div>
+
+                <!-- Modal -->
+                <div class="modal fade common_modalpopup" id="myModal1" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-body row">
+                                <p> Thank you, your submission has been received.</p>
+                            </div>
+                            <button class="btn okBtn" data-dismiss="modal">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<!-- <div class="home_main">
+    <div class="right_content" id="main">
+        <div class="right_content_top">
+            <div class="cart-table-container">
+
+                <table>
+                    <thead>
+                        <tr>
+
+                            <td class="cart-name" style="width: 30%;">
+                                <a routerLink="/home" class="marg_r_10">
+                                    <i class="fa fa-angle-left back_arrow"></i>
+                                </a>Your Cart
+                            </td>
+                            <td class="table-heading-item" style="width: 40%;">
+                                Product
+                            </td>
+                            <td class="table-heading-item">
+                                Price
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of cartService.items.cart_list; let i = index" (click)="toReport(item.node_id)">
+                            <td class="cart-image-padding">
+                                <div class="image_border">
+                                    <img src="{{ item.product_image }} " id="cart_image" [ngClass]="'update-failed-image' + i" (error)="updateUrl(i)" style="width: 119px; height: 133px;" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="btn-technology-margin">
+                                
+                                    <div class="technology-btn-desc">
+                                        {{ item.content_title }}
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="price-text">
+                                {{ item.cost ? (item.cost | currency:'USD':true)  : '$0.00' }}
+                            </td>
+                            <td class="cart-table-delete-icon">
+                                <i class="fa fa-trash" (click)="removeCartItem($event, item.cart_item_id)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="total-amount-class">
+                    <span class="total-amount">Total Amount : </span>
+                    <span class="amount-class">{{ cartService.items.cart_sum ? (cartService.items.cart_sum | currency:'USD':true)  : '$0' }}</span>
+                </div>
+                <div class="checkout-container">
+                    <div class="checkout-item">
+                        <a routerLink="/home">
+                            <span _ngcontent-c5="" class="fa fa-angle-left left_arrow" data-slide="prev" href="#myCarouselblog">
+
+                            </span> CONTINUE SHOPPING
+                        </a>
+                    </div>
+                    <div class="checkout-divider"></div>
+                    <button type="button" class="checkout-item checkout-btn" routerLink="/payment" *ngIf="cartService.items.cart_count > 0">
+                        PROCEED TO CHECKOUT
+                    </button>
+                </div>
+                <div *ngIf="cartService.items.cart_count == -1">Your cart is empty. Go back to add some item(s) to the cart.</div>
+            </div>
+        </div>
+    </div>
+</div> -->

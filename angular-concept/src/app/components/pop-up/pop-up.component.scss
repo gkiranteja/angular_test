@@ -1,0 +1,56 @@
+.reports_btn {
+    position: absolute;
+    right: 63px;
+    top: 19px;
+    padding: 5px;
+    background-color: black;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 15px;
+}
+
+.common_modalpopup {
+    .modal-dialog{
+        top: 30%;
+        left: 0%;
+        width: 545px;
+        .modal-content{
+            border: 0px solid #999 !important;
+            .modal-header{
+                background: #01426a;
+                color:#ffffff;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+                margin-top: -1px;
+                button{
+                    &.close{
+                        opacity: 1;
+                        border: none;
+                        text-shadow: none;
+                        .fa-close {
+                            color: #fc6b02;
+                        }
+                    }
+                }
+            }
+            .modal-body{
+                padding: 25px 20px;
+                text-align: justify;
+                word-wrap: break-word;
+                // text-transform: capitalize;
+            }
+            .modal-footer{
+                justify-content: center;
+                display: flex;
+                .close{
+                    color: #fff;
+                    background-color: #f06324;
+                    border-color: #ccc;
+                    font-size: 15px;
+                    padding: 10px 35px;
+                    opacity: .9;
+                }
+            }
+        }
+    }
+}

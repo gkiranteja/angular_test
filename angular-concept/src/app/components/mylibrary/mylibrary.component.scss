@@ -1,0 +1,147 @@
+ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+a {
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+.sub_heading{
+    margin-left: 0px;
+    margin-top: -2px;
+    margin-bottom: 20px;
+}
+.right_content {
+    background: #fff;
+    width: calc(100% - 100px);
+    margin-left: 100px;
+    overflow-x: hidden;
+    .right_content_top {
+        padding: 20px 30px 30px 30px;
+    }
+    .mylibrary_main {
+        .library_item {
+            border-bottom: 1px solid #d1d1d1;
+            .row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                img {
+                    height: 215px;
+                }
+                .news_txt {
+                    a {
+                        text-decoration: none;
+                        color: #333;
+                        cursor :pointer;
+                    }
+                }
+                .library_media {
+                    padding-left: 0px;
+                    li {
+                        list-style-type: none;
+                        a {
+                            width: 50px;
+                            height: 50px;
+                            // border: 1px solid #cfcfcf;
+                            text-align: center;
+                            margin-bottom: 10px;
+                            border-radius: 5px;
+                            display: block;
+                            span {
+                                color: #f26b6f;
+                                font-size: 36px;
+                                line-height: 50px;
+                                &.icon-dele_rep {
+                                    img {
+                                        width: 30px;
+                                        height: 30px;
+                                        margin: 0 auto;
+                                        vertical-align: middle;
+                                        line-height: 19px;
+                                        margin-top: 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        position: fixed;
+        bottom: 0px;
+        width: calc(100% - 250px);
+    }
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #e8e8ea;
+    padding: 30px 40px;
+    .transfer_logo {
+        img {
+            height: 40px;
+        }
+    }
+    ul {
+        margin-bottom: 0px;
+        li {
+            display: inline-block;
+            border-right: 1px solid #fc6b02;
+            padding: 0px 15px;
+            &:last-child {
+                border-right: none;
+            }
+            a {
+                color: #fc6b02;
+            }
+        }
+    }
+    &.footer_offline {
+        position: fixed;
+        width: 100%;
+        bottom: 0px;
+        left: 0px;
+    }
+}
+.technology_btn{
+    padding: 3px 14px !important;
+}
+.horizontal_between_alignment{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content:space-around;
+    color:#fff;
+    font-family:Poppins-Medium;
+    margin-top:25px;
+    .more-options{
+        margin-left:10px;
+    }
+    img{
+        width: 20px !important;
+        height: 20px !important;
+        margin-right: 5px;
+    }
+    .rating-star{
+        display: flex;
+    }
+}
+.padding-container{
+    padding-left:0px;
+    padding-right:15px;
+}
+.image-text{
+    margin: 20px 0px 25px !important;
+    height: 85px !important;
+    .image-description{
+
+    }
+}

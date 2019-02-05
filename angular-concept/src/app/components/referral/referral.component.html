@@ -1,0 +1,72 @@
+<div id="main" class="right_content">
+  <div class="right_content_top">
+    <h3 class="">Referral</h3>
+    <div class="sub_heading">Refer Trasers to revitalize Digitalization.</div>
+    <header>
+      <div class="clearfix"></div>
+    </header>
+    <div class="referral_container" > 
+      <!-- <div class="col-sm-2">
+        <div class="add-icon" (click)="addNewFiled()"><img  src="./../assets/images/add.svg"></div>
+      </div> -->
+      <!-- <form #referrerForm="ngForm" id="contacsForm" name="contacsForm" (ngSubmit)="submitReferral(referrerForm.value)"> -->
+      <div class=" select_container referral_item" *ngFor="let item of ElemntsArray; let length = count; let i = index;">
+          <input class="container_item referral_input" type="text" placeholder="Enter Email" name="email" [attr.id]="'email-' + item" ngModel>
+          <select class="container_item" [attr.id]="'role-' + item" >
+            <option value="SELECT" selected="selected">Select</option>
+            <option value="377">Boards and CEO</option>
+            <option value="450">CIO</option>
+            <option value="458">Others</option>
+          </select>
+              <div class="" *ngIf="(i==0)"  style="display:flex">
+                  <div class="add-icon" (click)="addNewFiled(item)" [attr.id]="'click-' + item">
+                    <img  [attr.id]="'img-' + item" src="./../assets/images/add.svg" />
+                  </div>
+                  <div *ngIf="firstRowDelete && i==0" class='cross-icon' (click)="RemoveFiled(item)" [attr.id]="'click-' + item">
+                      <img  [attr.id]="'img-' + item" src="./../assets/images/multiply.svg" />
+                    </div>
+              </div>
+              <div class="" *ngIf="(i > 0)">
+                  <div [class]=classes[item] (click)="RemoveFiled(item)" [attr.id]="'click-' + item">
+                    <img  [attr.id]="'img-' + item" [src]=dummyImageArray[item] />
+                  </div>
+              </div>   
+      </div>
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+            <div class="submit_btn">
+                <!-- data-target="#submitmodal" -->
+                <div data-toggle="modal"  class="submit_text" (click)="saveReferral()">SUBMIT</div>
+              </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" class="errormessage">
+        <div *ngIf="showError" class="error-status">Please enter valid inputs</div>
+        <!-- <div *ngIf="showResponseStatus">{{showResponse}}</div>  -->
+        <div *ngIf="exceedLimit" class="error-status">You have reached the maximum limit of 3 referrals</div>  
+    </div>
+  </div>
+</div>
+<div class="modal fade common_modalpopup"  role="dialog" id="submitmodal" >  
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div  class="modal-content">
+          <div class="modal-header">
+              <!-- <button type="button" class="close" ><span class="fa fa-close" ></span></button> -->
+              <h4 class="modal-title">Thank you</h4>
+          </div>
+        <div class="modal-body">
+              <div class="">Thank you for referring Trasers. As we launch recently to unveil business transformation,
+                 we truly appreciate your confidence in our research insights and are delighted that you chose to recommend us. 
+                 we are excited about the digital oppurtunities and challenges, and we are confident that your referral will be
+                  contented with our shared insights.</div>
+              <div class="second_line">Let us know if there is anything else we can do for you.</div>
+              <div class="close_btn">
+                  <button type="button" class="btn btn-default close_text" data-dismiss="modal">OK</button>
+              </div>
+        </div>
+      </div>
+    </div>
+</div>

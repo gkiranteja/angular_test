@@ -1,0 +1,159 @@
+<div id="main" class="downloads_page">
+    <div class="home_main_div">
+        <div class="home_library_tabs">
+            <div class="tab-content">
+                <div class="tab-pane fade in active">
+                    <div class="tab_content_in">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <!-- Wrapper for slides -->
+                            <div class="corousel-heading">{{libraryDetails.node_title}}</div>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="col-sm-12 main-content">
+                                        <div class="tab_img">
+                                            <img src={{libraryDetails.image}} alt="library-image" class="single_img">
+                                            <div class="horizontal_between_alignment">
+                                                <p>{{libraryDetails.description}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade in active">
+                                <div class="tab_content_in">
+                                    <div class="carousel slide">
+                                        <div class="carousel-inner">
+                                            <div class="item active">
+                                                <div class="col-sm-6 main-content">
+                                                    <div class="tab_img">
+                                                        <h3 class="corousel-heading">Buying Options</h3>
+                                                        <div class="buying">
+                                                            <div class="dropdown_wishlist">
+                                                                <label>Add User :</label>
+                                                                <select>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                </select>
+                                                                <label>Add Analyst Hours :</label>
+                                                                <select>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="buy_btn">
+                                                                <button class="cart">Add to Cart</button>
+                                                                <button class="Wishlist">Add to Mylist</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 main-content">
+                                                    <div class="wishlist_content">
+                                                        <h3 class="corousel-heading">What is Included</h3>
+                                                        <ul class="wishlist_list">
+                                                            <!-- <li *ngFor="let includedContent from libraryDetails.what_included"> -->
+                                                            <li *ngFor="let includes of libraryDetails.what_included; let i=index" [attr.data-index]="i">
+                                                               {{includes}}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="corousel-heading">Reports Inclubed</div>
+                            <div class="tab-content library-details">
+                                <div class="tab-pane fade in active">
+                                    <div class="tab_content_in">
+                                        <div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="false">
+                                            <div class="carousel-inner">
+                                                <div *ngFor="let report of includedReports; let i=index" [attr.data-index]="i" [ngClass]="[(i==0) ? 'item active' : 'item']">
+                                                    <div class="col-sm-3 main-content" *ngFor="let article of report">
+                                                        <div class="tab_img card_img">
+                                                            <div class="backgrd_color">
+                                                                <img src={{article.image}} alt="included-repots">
+                                                                <div class="image-text">{{article.title}}</div>
+                                                                <!-- <p>{{article.description}}</p> -->
+                                                                <div class="horizontal_between_alignment">
+                                                                    <img src="./../../../assets/images/eye-solid.svg"
+                                                                        alt="preview" class="preivew_img">
+                                                                    <span>Preview</span>
+                                                                    <img src="./../../../assets/images/plus-circle-solid.svg"
+                                                                        alt="Wishlist" class="preivew_img">
+                                                                    <span *ngIf="(article.isaddedtolist == 'False')" (click)="addList(article.node_id, article.node_id)"><a>Add to Wishlist</a></span>
+                                                                    <span *ngIf="(article.isaddedtolist == 'True')">Added to Wishlist</span>
+                                                                </div>
+                                                                <div class="rating-box" *ngIf="article.rating == 0">
+                                                                    <span class="rating-star empty-star" (click)="rateReport(1)"></span>
+                                                                    <span class="rating-star empty-star" (click)="rateReport(2)"></span>
+                                                                    <span class="rating-star empty-star" (click)="rateReport(3)"></span>
+                                                                    <span class="rating-star empty-star" (click)="rateReport(4)"></span>
+                                                                    <span class="rating-star empty-star" (click)="rateReport(5)"></span>
+                                                                </div>
+                                                                <div class="rating-box" *ngIf="article.rating > 0">
+                                                                    <span [ngClass]="[(article.rating >= 1) ? 'rating-star full-star' : 'rating-star empty-star']" ></span>
+                                                                    <span [ngClass]="[(article.rating >= 2) ? 'rating-star full-star' : 'rating-star empty-star']" ></span>
+                                                                    <span [ngClass]="[(article.rating >= 3) ? 'rating-star full-star' : 'rating-star empty-star']" ></span>
+                                                                    <span [ngClass]="[(article.rating >= 4) ? 'rating-star full-star' : 'rating-star empty-star']" ></span>
+                                                                    <span [ngClass]="[(article.rating >= 5) ? 'rating-star full-star' : 'rating-star empty-star']" ></span>
+                                                                </div>    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Left and right controls -->
+                                <a class="left carousel-control" href="#myCarousel2" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel2" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade in active recommended_img_div">
+                    <div class="tab_content_in">
+                        <div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <!-- Wrapper for slides -->
+                            <div class="corousel-heading">Related Libraries</div>
+                            <div class="carousel-inner">
+                                <div *ngFor="let report of relatedLibraries; let i=index" [attr.data-index]="i" [ngClass]="[(i==0) ? 'item active' : 'item']">
+                                    <div class="col-sm-3 main-content" *ngFor="let article of report">
+                                        <div class="tab_img" (click)="gotoLibraryDetails(article.product_id)">
+                                            <img src={{article.image}} alt="related-library-image">
+                                            <div class="image-recommended-text">{{article.title}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel1" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel1" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- <div  *ngIf="errorMsg"> <div class="parent"><div class="child">No Results Found</div></div></div> -->
+</div>
